@@ -15,17 +15,17 @@ void AdjustArmDownEncoder::Initialize()
 
 void AdjustArmDownEncoder::Execute()
 {
-	Robot::ShooterSubsystem.armDown();
+	Robot::ShooterSubsystem::armDown();
 }
 
 bool AdjustArmDownEncoder::IsFinished()
 {
-	Robot::ShooterSubsystem.isDown();
+	Robot::ShooterSubsystem::isDown();
 }
 
 void AdjustArmDownEncoder::End()
 {
-	Robot::ShooterSubsystem.armStop();
+	Robot::ShooterSubsystem::armStop();
 }
 
 void AdjustArmDownEncoder::Interrupted()
