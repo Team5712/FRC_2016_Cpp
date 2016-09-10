@@ -18,7 +18,7 @@ void AdjustArmDownEncoder::Execute()
 	Robot::ShooterSubsystem.armDown();
 }
 
-void AdjustArmDownEncoder::IsFinished()
+bool AdjustArmDownEncoder::IsFinished()
 {
 	Robot::ShooterSubsystem.isDown();
 }
