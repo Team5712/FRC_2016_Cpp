@@ -7,8 +7,9 @@ AutonomousPlanner::AutonomousPlanner(string defense, int position)
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 
-	Requires(exampleSubsystem);
+	Requires(Robot::driveSubsystem);
 
+	// "Save" these values for later use
 	this->defense = defense;
 	this->position = position;
 
@@ -17,13 +18,14 @@ AutonomousPlanner::AutonomousPlanner(string defense, int position)
 // Called just before this Command runs the first time
 void AutonomousPlanner::Initialize()
 {
+	// Populate the maps
 	initInformation();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousPlanner::Execute()
 {
-
+	// Set driveSubsystem's values
 	loadDriveInfo(defense, position);
 
 }
@@ -47,6 +49,10 @@ void AutonomousPlanner::Interrupted()
 
 }
 
+// Fills the maps (encoderInfo, angleInfo, speedInfo) with
+// pre-programmed data. encoderInfo & angleInfo look at the
+// position of the robot, whereas speedInfo looks at the
+// defense the robot will be crossing
 void AutonomousPlanner::InitInformation()
 {
 
@@ -70,7 +76,35 @@ void AutonomousPlanner::InitInformation()
 
 }
 
+// Sets the driveSubsytem's values (gotten from the maps)
+// based on the defense and the position of the robot. These
+// variables are determined by the SmartDasboard
 void AutonomousPlanner::LoadDriveInfo(string def, int pos)
 {
 
+	// Variables for easy readability; not needed
+	int newDriveTickGoal = 0;
+	double newAngle = 0.0;
+	double newSpeed = 0.0;
+
+	// second stands for the second value in the map
+	newDriveTickGoal = encoderInfo.find(pos)->second;
+	newAngle = angleInfo.find(pos)->second;
+	// If there is a value for the defense, set it
+	if(newSpeed.find(def) != newSpeed.end())
+	{
+		newSpeed = speedInfo.find(def)->second;
+	} else
+	{ // Otherwise, set it to a default value
+		newSpeed = speedInfo.find("default")->second;
+	}
+
+	// Update the drive subsystem's values
+	Robot::driveSubsystem->SetDriveTickGoal(newDriveTickGoal);
+	Robot::driveSubsystem->SetDegreesTurn(newAngle);
+	Robot::driveSubsystem->SetSpeed(newSpeed);
+
+	hasLoaded = true;
 }
+
+

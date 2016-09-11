@@ -1,11 +1,13 @@
 #ifndef AutonomousPlanner_H
 #define AutonomousPlanner_H
 
-#include <string>
+
+#include <string> // Should work, despite the error
 #include <map>
 
 #include "../CommandBase.h"
 #include "WPILib.h"
+
 
 class AutonomousPlanner: public CommandBase
 {
@@ -28,7 +30,6 @@ private:
 
 	void InitInformation();
 	void LoadDriveInfo(string, int);
-
 };
 
 #endif
