@@ -6,7 +6,7 @@
 
 AdjustArmDownEncoder::AdjustArmDownEncoder() : CommandBase("AdjustArmDownEncoder")
 {
-	Requires(Robot::shooterSubsystem);
+	Requires(Robot::ShooterSystem);
 }
 
 void AdjustArmDownEncoder::Initialize()
@@ -16,17 +16,17 @@ void AdjustArmDownEncoder::Initialize()
 
 void AdjustArmDownEncoder::Execute()
 {
-	Robot::ShooterSubsystem::armDown();
+	Robot::ShooterSystem::armDown();
 }
 
 bool AdjustArmDownEncoder::IsFinished()
 {
-	Robot::ShooterSubsystem::isDown();
+	Robot::ShooterSystem::isDown();
 }
 
 void AdjustArmDownEncoder::End()
 {
-	Robot::ShooterSubsystem::armStop();
+	Robot::ShooterSystem::armStop();
 }
 
 void AdjustArmDownEncoder::Interrupted()
