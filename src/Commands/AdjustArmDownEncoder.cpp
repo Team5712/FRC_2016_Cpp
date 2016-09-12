@@ -1,5 +1,6 @@
 #include "../CommandBase.h";
 #include "WPILibs.h";
+#include "AdjustArmDownEncoder.h"
 
 #include <iostream>
 
