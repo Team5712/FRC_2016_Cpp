@@ -8,7 +8,7 @@
 
 void AdjustArmUpEncoder::AdjustArmUpEncoder() : CommandBase("AdjustArmUpEncoder")
 {
-	Requires(Robot::ShooterSystem.armUp());
+	Requires(Robot::ShooterSystem;
 }
 
 void AdjustArmUpEncoder::Initialize()
