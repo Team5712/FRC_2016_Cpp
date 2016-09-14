@@ -1,13 +1,13 @@
-#ifndef Stop_H
-#define Stop_H
+#ifndef LowerArmAutonomous_H
+#define LowerArmAutonomous_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class Stop: public CommandBase
+class LowerArmAutonomous: public CommandBase
 {
 public:
-	Stop();
+	LowerArmAutonomous();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -19,4 +19,3 @@ private:
 }
 
 #endif
-

@@ -1,13 +1,13 @@
-#ifndef Stop_H
-#define Stop_H
+#ifndef ShiftGear_H
+#define ShiftGear_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class Stop: public CommandBase
+class ShiftGear: public CommandBase
 {
 public:
-	Stop();
+	ShiftGear();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -19,4 +19,3 @@ private:
 }
 
 #endif
-
