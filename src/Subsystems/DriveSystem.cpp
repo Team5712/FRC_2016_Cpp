@@ -1,21 +1,11 @@
-#ifndef DRIVESUBSYSTEM_cpp
-#define DRIVESUBSYSTEM_cpp
-#include <RobotMap.h>
-#include <RobotMap.cpp>
-#include <AHRS.h>
-#include <AHRS.cpp>
-#include <Encoder.h>
-#include <Encoder.cpp>
-#include <RobotDrive.h>
-#include <RobotDrive.cpp>
-#include <SerialPort.h>
-#include <SerialPort.cpp>
-#include <VictorSP.h>
-#include <VictorSP.cpp>
-#include <Subystem.h>
-#include <Subsystem.cpp>
-#include <SmartDashboard.h>
-#include <SmartDashboard.cpp>
+#include "RobotMap.h"
+#include "AHRS.h"
+#include "Encoder.h"
+#include "RobotDrive.h"
+#include "SerialPort.h"
+#include "VictorSP.h"
+#include "Subystem.h"
+#include "SmartDashboard.h"
 
 /**
  *
