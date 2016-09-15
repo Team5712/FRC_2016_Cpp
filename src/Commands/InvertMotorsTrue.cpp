@@ -14,7 +14,7 @@ void InvertMotorsTrue::InvertMotorsTrue() : CommandBase("InvertMotorsTrue")
 void InvertMotorsTrue::Initialize()
 {
 	std::cout << "InvertMotorsTrue has initialized";
-	Robot::DriveSystem::invertMotorsTrue();
+	Robot::DriveSystem->invertMotorsTrue();
 }
 
 void InvertMotorsTrue::Execute()
@@ -24,7 +24,7 @@ void InvertMotorsTrue::Execute()
 
 bool InvertMotorsTrue::IsFinished()
 {
-	return true;
+	return false;
 }
 
 void InvertMotorsTrue::End()
