@@ -17,17 +17,17 @@ void Intake::Initialize()
 
 void Intake::Execute()
 {
-	Robot::ShooterSystem::intake();
+	Robot::ShooterSystem->intake();
 }
 
 bool Intake::IsFinished()
 {
-	return Robot::ShooterSystem::isTimedOut();
+	return Robot::ShooterSystem->isTimedOut();
 }
 
 void Intake::End()
 {
-	Robot::ShooterSystem::stopShooter();
+	Robot::ShooterSystem->stopShooter();
 }
 
 void Intake::Interrupted()
