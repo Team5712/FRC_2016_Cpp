@@ -18,17 +18,17 @@ void TurnXDegrees::Initialize()
 
 void TurnXDegrees::Execute()
 {
-	Robot::ShooterSystem::turnXDegrees();
+	Robot::ShooterSystem->turnXDegrees();
 }
 
 bool TurnXDegrees::IsFinished()
 {
-	return Robot::ShooterSystem::isTurnedX();
+	return Robot::ShooterSystem->isTurnedX();
 }
 
 void TurnXDegrees::End()
 {
-	Robot::ShooterSystem::stop();
+	Robot::ShooterSystem->stop();
 }
 
 void TurnXDegrees::Interrupted()
