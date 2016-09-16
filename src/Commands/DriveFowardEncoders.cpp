@@ -18,17 +18,17 @@ void DriveFowardEncoders::Initialize()
 
 void DriveFowardEncoders::Execute()
 {
-	Robot::DriveSystem::driveStraightForward();
+	Robot::DriveSystem->driveStraightForward();
 }
 
 bool DriveFowardEncoders::IsFinished()
 {
-	return Robot::DriveSystem::isUnderLowbar();
+	return Robot::DriveSystem->isUnderLowbar();
 }
 
 void DriveFowardEncoders::End()
 {
-	Robot::DriveSystem::stop();
+	Robot::DriveSystem->stop();
 }
 
 void DriveFowardEncoders::Interrupted()

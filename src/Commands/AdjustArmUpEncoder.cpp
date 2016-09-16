@@ -18,17 +18,17 @@ void AdjustArmUpEncoder::Initialize()
 
 void AdjustArmUpEncoder::Execute()
 {
-	Robot::ShooterSystem::armUp();
+	Robot::ShooterSystem->armUp();
 }
 
 bool AdjustArmUpEncoder::IsFinished()
 {
-	return Robot::ShooterSystem::isUp();
+	return Robot::ShooterSystem->isUp();
 }
 
 void AdjustArmUpEncoder::End()
 {
-	Robot::ShooterSystem::stopArm();
+	Robot::ShooterSystem->stopArm();
 }
 
 void AdjustArmUpEncoder::Interrupted()

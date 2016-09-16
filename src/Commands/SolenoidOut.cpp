@@ -12,7 +12,7 @@ void SolenoidOut::SolenoidOut() : CommandBase("SolenoidOut")
 void SolenoidOut::Initialize()
 {
 	std::cout << "SolenoidOut has initialized";
-	//'setTimeout(0.5)' do not know C++ equivelant
+	SetTimeout(0.5);
 }
 
 void SolenoidOut::Execute()

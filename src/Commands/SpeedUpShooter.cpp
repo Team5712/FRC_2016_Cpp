@@ -9,7 +9,7 @@
 void SpeedUpShooter::SpeedUpShooter() : CommandBase("SpeedUpShooter")
 {
 	Requires(Robot::ShooterSystem);
-	//setTimeout(1) do not know equivelent in C++
+	SetTimeout(1);
 }
 
 void SpeedUpShooter::Initialize()

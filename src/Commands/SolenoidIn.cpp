@@ -14,7 +14,7 @@ void SolenoidIn::SolenoidIn() : CommandBase("SolenoidIn")
 void SolenoidIn::Initialize()
 {
 	std::cout << "SolenoidIn has initialized";
-	//'setTimeout(0.5)' do not know C++ equivelant
+	SetTimeout(0.5);
 }
 
 void SolenoidIn::Execute()

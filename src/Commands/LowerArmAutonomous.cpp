@@ -18,18 +18,18 @@ void LowerArmAutonomous::Initialize()
 
 void LowerArmAutonomous::Execute()
 {
-	Robot::ShooterSystem::armDown();
+	Robot::ShooterSystem->armDown();
 }
 
 bool LowerArmAutonomous::IsFinished()
 {
-	return Robot::ShooterSystem::isDownAutonomous();
+	return Robot::ShooterSystem->isDownAutonomous();
 }
 
 void LowerArmAutonomous::End()
 {
-	Robot::ShooterSystem::stopArm();
-	Robot::ShooterSystem::resetShooterEncoder();
+	Robot::ShooterSystem->stopArm();
+	Robot::ShooterSystem->resetShooterEncoder();
 }
 
 void LowerArmAutonomous::Interrupted()

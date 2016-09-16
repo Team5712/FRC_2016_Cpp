@@ -7,7 +7,7 @@
 void Intake::Intake() : CommandBase("Intake")
 {
 	Requires(Robot::ShooterSystem);
-	//In Java it says 'setTimeout(1);' on this line, purpose = unknown
+	SetTimeout(1);
 }
 
 void Intake::Initialize()
@@ -17,17 +17,17 @@ void Intake::Initialize()
 
 void Intake::Execute()
 {
-	Robot::ShooterSystem::intake();
+	Robot::ShooterSystem->intake();
 }
 
 bool Intake::IsFinished()
 {
-	return Robot::ShooterSystem::isTimedOut();
+	return Robot::ShooterSystem->isTimedOut();
 }
 
 void Intake::End()
 {
-	Robot::ShooterSystem::stopShooter();
+	Robot::ShooterSystem->stopShooter();
 }
 
 void Intake::Interrupted()
