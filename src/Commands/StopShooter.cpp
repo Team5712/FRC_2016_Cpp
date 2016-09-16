@@ -18,12 +18,12 @@ void StopShooter::Initialize()
 
 void StopShooter::Execute()
 {
-	Robot::ShooterSystem::stopShooter();
+	Robot::ShooterSystem->stopShooter();
 }
 
 bool StopShooter::IsFinished()
 {
-	return Robot::ShooterSystem::isStopped();
+	return Robot::ShooterSystem->isStopped();
 }
 
 void StopShooter::End()
