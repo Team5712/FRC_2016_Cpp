@@ -35,7 +35,7 @@ class DriveSubsystem : public Subsystem {
 	AHRS gyro;
 	SerialPort serial_port;
 		
-	byte update_rate_hz = 50;
+	int update_rate_hz = 50;
 	double degreesTurn;
 	
 	int driveTickGoal = 2 * -1000;
