@@ -2,12 +2,15 @@
 #define ROBOTMAP_H
 
 class RobotMap {
-  
-  public:
-  
-  RobotMap();
-  
-  private:
-  
-  protected:
+
+public:
+
+	RobotMap();
+
+private:
+
+protected:
+
 };
+
+#endif
