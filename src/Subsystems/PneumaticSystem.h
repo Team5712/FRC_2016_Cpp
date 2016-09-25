@@ -5,12 +5,12 @@ class PneumaticSystem : Subsystem {
 
   public:
   
-  PneumaticSubsystem();
-  initDefaultCommand();
-  shiftHigh();
-  shiftLow();
-  in();
-  out();
+  void PneumaticSubsystem();
+  void initDefaultCommand();
+  void shiftHigh();
+  void shiftLow();
+  void in();
+  void out();
   
 };
 
