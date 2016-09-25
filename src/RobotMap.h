@@ -9,5 +9,5 @@ class RobotMap {
   
   private:
   
-  protected;
-}
+  protected:
+};
