@@ -1,29 +1,26 @@
 #include "Robot.h"
-#include "RobotMap.h"
-#include "AHRS.h"
-#include "Encoder.h"
-#include "RobotDrive.h"
-#include "SerialPort.h"
-#include "VictorSP.h"
-#include "Subystem.h"
-#include "SmartDashboard.h"
+//#include "RobotMap.h"
+//#include "AHRS.h"
+//#include "Encoder.h"
+//#include "RobotDrive.h"
+//#include "SerialPort.h"
+//#include "VictorSP.h"
 
-
+DriveSystem *Robot::driveSystem = 0;
+PneumaticSystem *Robot::pneumaticSystem = 0;
+ShooterSystem *Robot::shooterSystem = 0;
 
 void Robot::RobotInit()
 {
+	driveSystem = new DriveSystem();
+	pneumaticSystem = new PneumaticSystem();
+	shooterSystem = new ShooterSystem();
 
-	oi = new OI(); 
+	oi = new OI();
+	window = LiveWindow::GetInstance();
 	
-	autoChooser = new SendableChooser();
-	autoChooser.addDefault("Lowbar", new LowbarAutonomous());
-	autoChooser.addObject("Moat", new MoatAutonomous());
-	SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
-
-	angleChooser = new SendableChooser();
-	angleChooser.addDefault("120", 120);
-	angleChooser.addObject("150", 150);
-	SmartDashboard.putData("Angle Chooser", angleChooser);
+	defenseChooser = new SendableChooser();
+	AddAutoOptions(defenseChooser, "defense");
 
 	pneumaticSubsystem.compressor.setClosedLoopControl(true);
 
@@ -61,7 +58,8 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-	if (autonomousSelected != null) autonomousSelected.cancel();
+	if (autonomousSelected != null) autonomousSelected.cancel()
+	{
 		driveSubsystem.resetDriveEncoders();
 		driveSubsystem.resetGyro();
 	}
@@ -81,4 +79,31 @@ void Robot::TeleopPeriodic()
 	CameraServer.getInstance().setImage(frame);
 }
 
+void Robot::AddAutoOptions(SendableChooser *chooser, string optionSet)
+{
+
+	// Use proper English and capitalization for these names, as they will
+	// be displayed on the SmartDashboard. Later, we can make these lower-case
+	// and replace the spaces with underscores. This is basically to keep consistent
+	// to programming naming
+	const string defenses[] = {"Portcullis", "Cheval de Frise", // A
+			"Ramparts", "Moat", // B
+			"Drawbridge", "Sally Port", // C
+			"Rock Wall", "Rough Terrain", // D
+			"Low Bar", // Required
+			"No Cross"};
+
+	const int positions[] = {1, 2, 3, 4, 5};
+
+
+	if(optionSet.compare("defense") == 0)
+	{
+		// Defenses
+		for(int d = 0; d < sizeof(defenses); d++)
+		{
+			chooser->AddObject(defenses[d], defenses[d]);
+		}
+	}
+
+}
 
