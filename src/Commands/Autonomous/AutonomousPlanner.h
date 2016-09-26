@@ -9,6 +9,8 @@
 #include "WPILib.h"
 
 
+using namespace std;
+
 class AutonomousPlanner: public CommandBase
 {
 public:
