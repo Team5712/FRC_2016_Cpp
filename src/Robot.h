@@ -17,32 +17,33 @@
 
 using namespace std;
 
-class Robot
+class Robot : public IterativeRobot
 {
 public:
 	// *** Methods ***
-	void RobotInit();
-	void DisabledInit();
-	void DisabledPeriodic();
-	void AutonomousInit();
-	void AutonomousPeriodic();
-	void TeleopInit();
-	void TeleopPeriodic();
-	void TestPeriodic();
-
+	virtual void RobotInit();
+	virtual void DisabledInit();
+	virtual void DisabledPeriodic();
+	virtual void AutonomousInit();
+	virtual void AutonomousPeriodic();
+	virtual void TeleopInit();
+	virtual void TeleopPeriodic();
+	virtual void TestPeriodic();
 
 	// *** Objects ***
-	static OI * oi;
-	LiveWindow * window;
+	static OI *oi;
+	LiveWindow *window;
 
 	// Subsystems
-	static DriveSystem * driveSystem;
+	static DriveSystem *driveSystem;
+	static PneumaticSystem *pneumaticSystem;
+	static ShooterSystem *shooterSystem;
 
 	// Commands / CommandGroups
-	CommandGroup * autonomousCommand;
+	CommandGroup *autonomousCommand;
 
 	// Autonomous
-	SendableChooser * defenseChooser, * positionChooser, * shootChooser;
+	SendableChooser *defenseChooser, *positionChooser, *shootChooser;
 
 	// *** Variables ***
 	static bool IS_COMPETITION_ROBOT;
@@ -53,7 +54,7 @@ public:
 
 private:
 	// *** Methods ***
-	SendableChooser * addAutoOptions(SendableChooser *, string);
+	void AddAutoOptions(SendableChooser *, string);
 
 	// *** Objects ***
 
