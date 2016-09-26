@@ -1,6 +1,6 @@
 #include "AutonomousPlanner.h"
 
-using namespace std;
+
 
 AutonomousPlanner::AutonomousPlanner(string defense, int position)
 {
@@ -12,21 +12,21 @@ AutonomousPlanner::AutonomousPlanner(string defense, int position)
 	// "Save" these values for later use
 	this->defense = defense;
 	this->position = position;
-
+	hasLoaded = false;
 }
 
 // Called just before this Command runs the first time
 void AutonomousPlanner::Initialize()
 {
 	// Populate the maps
-	initInformation();
+	InitInformation();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousPlanner::Execute()
 {
 	// Set driveSubsystem's values
-	loadDriveInfo(defense, position);
+	LoadDriveInfo(defense, position);
 
 }
 

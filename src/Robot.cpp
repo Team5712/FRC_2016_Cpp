@@ -1,102 +1,109 @@
-#include "RobotMap.h"
-#include "AHRS.h"
-#include "Encoder.h"
-#include "RobotDrive.h"
-#include "SerialPort.h"
-#include "VictorSP.h"
-#include "Subystem.h"
-#include "SmartDashboard.h"
+#include "Robot.h"
+//#include "RobotMap.h"
+//#include "AHRS.h"
+//#include "Encoder.h"
+//#include "RobotDrive.h"
+//#include "SerialPort.h"
+//#include "VictorSP.h"
 
-class Robot : public ItertatveRobot
+DriveSystem *Robot::driveSystem = 0;
+PneumaticSystem *Robot::pneumaticSystem = 0;
+ShooterSystem *Robot::shooterSystem = 0;
+
+void Robot::RobotInit()
 {
-public:
+	driveSystem = new DriveSystem();
+	pneumaticSystem = new PneumaticSystem();
+	shooterSystem = new ShooterSystem();
 
-static boolean IS_COMPETITION_ROBOT;
+	oi = new OI();
+	window = LiveWindow::GetInstance();
 	
-static DriveSubsystem driveSubsystem = new DriveSubsystem();	
-static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-static PneumaticSubsystem pneumaticSubsystem = new PneumaticSubsystem();
-	
-static OI oi;
-	
-    //Autonomous commands
-    CommandGroup autonomousSelected;
-    double angleSelected;
-    
-    //Autonomous Selector
-    SendableChooser autoChooser, angleChooser;
-    
-    //Camera Variables
-    int sessionFront;
-    Image frame;
+	defenseChooser = new SendableChooser();
+	AddAutoOptions(defenseChooser, "defense");
 
-	void RobotInit()
-	{
-	oi = new OI(); 
-		
-		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Lowbar", new LowbarAutonomous());
-		autoChooser.addObject("Moat", new MoatAutonomous());
-		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
-		
-		angleChooser = new SendableChooser();
-		angleChooser.addDefault("120", 120);
-		angleChooser.addObject("150", 150);
-		SmartDashboard.putData("Angle Chooser", angleChooser);
-		
-		pneumaticSubsystem.compressor.setClosedLoopControl(true);
-		
-		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-		sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-		NIVision.IMAQdxConfigureGrab(sessionFront);
-		
-		driveSubsystem.resetGyro();
-		driveSubsystem.resetDriveEncoders();
-		shooterSubsystem.resetShooterEncoder();	
-	}
-	
-	void AutonomousInit()
-	{
+	pneumaticSubsystem.compressor.setClosedLoopControl(true);
+
+	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+	sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+	NIVision.IMAQdxConfigureGrab(sessionFront);
+
+	driveSubsystem.resetGyro();
+	driveSubsystem.resetDriveEncoders();
+	shooterSubsystem.resetShooterEncoder();
+}
+
+void Robot::AutonomousInit()
+{
 	System.out.println("Autonomous Selected: " + autoChooser.getSelected());
-        System.out.println("Angle Selected: " + angleChooser.getSelected());
-        
-    	pneumaticSubsystem.in();
-        driveSubsystem.resetDriveEncoders();
-        driveSubsystem.resetGyro();
-        shooterSubsystem.resetShooterEncoder();
-        
-        autonomousSelected = (CommandGroup) autoChooser.getSelected();
-        angleSelected = (int) angleChooser.getSelected();
-        autonomousSelected.start();	
-	}
+	System.out.println("Angle Selected: " + angleChooser.getSelected());
+
+	pneumaticSubsystem.in();
+	driveSubsystem.resetDriveEncoders();
+	driveSubsystem.resetGyro();
+	shooterSubsystem.resetShooterEncoder();
 	
-	void AutonomousPeriodic()
-	{
+	autonomousSelected = (CommandGroup) autoChooser.getSelected();
+	angleSelected = (int) angleChooser.getSelected();
+	autonomousSelected.start();
+}
+
+void Robot::AutonomousPeriodic()
+{
 	Scheduler.getInstance().run();
-        
-        driveSubsystem.display();
-        shooterSubsystem.display();	
-	}
 	
-	void TeleopInit()
+	driveSubsystem.display();
+	shooterSubsystem.display();
+}
+
+void Robot::TeleopInit()
+{
+	if (autonomousSelected != null) autonomousSelected.cancel()
 	{
-	if (autonomousSelected != null) autonomousSelected.cancel();
-    	
-    	driveSubsystem.resetDriveEncoders();
-    	driveSubsystem.resetGyro();	
-	}
-	
-	void TeleopPeriodic()
-	{
-	Scheduler.getInstance().run();
-    	
-    	driveSubsystem.drive.arcadeDrive(oi.driveStick);
-    	shooterSubsystem.shooter.set(oi.shootStick.getRawAxis(1));
-    	
-    	driveSubsystem.display();
-    	shooterSubsystem.display();
-		
-		NIVision.IMAQdxGrab(sessionFront, frame, 0);
-		CameraServer.getInstance().setImage(frame);	
+		driveSubsystem.resetDriveEncoders();
+		driveSubsystem.resetGyro();
 	}
 }
+
+void Robot::TeleopPeriodic()
+{
+	Scheduler.getInstance().run();
+	
+	driveSubsystem.drive.arcadeDrive(oi.driveStick);
+	shooterSubsystem.shooter.set(oi.shootStick.getRawAxis(1));
+
+	driveSubsystem.display();
+	shooterSubsystem.display();
+
+	NIVision.IMAQdxGrab(sessionFront, frame, 0);
+	CameraServer.getInstance().setImage(frame);
+}
+
+void Robot::AddAutoOptions(SendableChooser *chooser, string optionSet)
+{
+
+	// Use proper English and capitalization for these names, as they will
+	// be displayed on the SmartDashboard. Later, we can make these lower-case
+	// and replace the spaces with underscores. This is basically to keep consistent
+	// to programming naming
+	const string defenses[] = {"Portcullis", "Cheval de Frise", // A
+			"Ramparts", "Moat", // B
+			"Drawbridge", "Sally Port", // C
+			"Rock Wall", "Rough Terrain", // D
+			"Low Bar", // Required
+			"No Cross"};
+
+	const int positions[] = {1, 2, 3, 4, 5};
+
+
+	if(optionSet.compare("defense") == 0)
+	{
+		// Defenses
+		for(int d = 0; d < sizeof(defenses); d++)
+		{
+			chooser->AddObject(defenses[d], defenses[d]);
+		}
+	}
+
+}
+
