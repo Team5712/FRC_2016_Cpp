@@ -2,7 +2,7 @@
 #define AutonomousPlanner_H
 
 
-#include <string> // Should work, despite the error
+#include <string>
 #include <map>
 
 #include "../CommandBase.h"
