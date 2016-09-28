@@ -1,18 +1,18 @@
 #ifndef PNEUMATICSYSTEM_H
 #define PNEUMATICSYSTEM_H
 
-#include "Commands/Subsystem.h"
-#include "WPILib.h"
 
+class PneumaticSystem : public Subsystem {
 
-class PneumaticSystem : public Subsystem
-{
-public:
-
-
-private:
-
-
+  public:
+  
+  void PneumaticSubsystem();
+  void initDefaultCommand();
+  void shiftHigh();
+  void shiftLow();
+  void in();
+  void out();
+  
 };
 
 
