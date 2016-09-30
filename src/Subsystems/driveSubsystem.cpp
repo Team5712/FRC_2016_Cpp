@@ -1,26 +1,20 @@
 #ifndef DRIVESYSTEM_cpp
 #define DRIVESYSTEM_cpp
+
 #include <RobotMap.h>
-#include <RobotMap.cpp>
 #include <AHRS.h>
-#include <AHRS.cpp>
 #include <Encoder.h>
-#include <Encoder.cpp>
 #include <RobotDrive.h>
-#include <RobotDrive.cpp>
 #include <SerialPort.h>
-#include <SerialPort.cpp>
 #include <VictorSP.h>
-#include <VictorSP.cpp>
-#include <Subystem.h>
-#include <Subsystem.cpp>
+#include <SubSystem.h>
 #include <SmartDashboard.h>
-#include <SmartDashboard.cpp>
+
 
 /**
  *
  */
-class Drivesystem : public Subsystem {
+class DriveSystem : public Subsystem {
 	
 	private:
 	
@@ -40,7 +34,7 @@ class Drivesystem : public Subsystem {
 	
 	int driveTickGoal = 2 * -1000;
 	
-	void Drivesystem::Drivesystem(){
+	void DriveSystem::Drivesystem(){
 		
 		leftFront = VictorSP(RobotMap.LEFT_FRONT_MOTOR);
 		leftRear = VictorSP(RobotMap.LEFT_REAR_MOTOR);
