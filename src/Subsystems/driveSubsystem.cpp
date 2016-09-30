@@ -1,5 +1,5 @@
-#ifndef DRIVESUBSYSTEM_cpp
-#define DRIVESUBSYSTEM_cpp
+#ifndef DRIVESYSTEM_cpp
+#define DRIVESYSTEM_cpp
 #include <RobotMap.h>
 #include <RobotMap.cpp>
 #include <AHRS.h>
@@ -20,7 +20,7 @@
 /**
  *
  */
-class DriveSubsystem : public Subsystem {
+class Drivesystem : public Subsystem {
 	
 	private:
 	
@@ -40,7 +40,7 @@ class DriveSubsystem : public Subsystem {
 	
 	int driveTickGoal = 2 * -1000;
 	
-	void DriveSubsystem::DriveSubsystem(){
+	void Drivesystem::Drivesystem(){
 		
 		leftFront = VictorSP(RobotMap.LEFT_FRONT_MOTOR);
 		leftRear = VictorSP(RobotMap.LEFT_REAR_MOTOR);
