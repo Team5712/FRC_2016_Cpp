@@ -1,7 +1,8 @@
 #ifndef PNEUMATICSYSTEM_H
 #define PNEUMATICSYSTEM_H
 
-class PneumaticSystem : Subsystem {
+
+class PneumaticSystem : public Subsystem {
 
   public:
   
@@ -13,5 +14,6 @@ class PneumaticSystem : Subsystem {
   void out();
   
 };
+
 
 #endif
