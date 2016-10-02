@@ -28,17 +28,17 @@ void ShooterSystem::Display()
 	SmartDashboard::putNumber("Shooter Encoder", shooterEncoder.get());
 }
 
-void ShooterSystem::resetShooterEncoder()
+void ShooterSystem::ResetShooterEncoder()
 {
 	shooterEncoder.reset();
 }
 
-void ShooterSystem::armDown()
+void ShooterSystem::ArmDown()
 {
 	shooter.set(-0.25);
 }
 
-bool ShooterSystem::isDownAutonomous()
+bool ShooterSystem::IsDownAutonomous()
 {
 	if(shooterEncoder.get() > 1400)
 	{
@@ -49,7 +49,7 @@ bool ShooterSystem::isDownAutonomous()
 	}
 }
 
-bool ShooterSystem::isDown()
+bool ShooterSystem::IsDown()
 {
 	if(shooterEncoder.get() > 0)
 	{
@@ -60,12 +60,12 @@ bool ShooterSystem::isDown()
 	}
 }
 
-void ShooterSystem::armUp()
+void ShooterSystem::ArmUp()
 {
 	shooter.set(0.25);
 }
 
-bool isUpAutonomous()
+bool ShooterSystem::IsUpAutonomous()
 {
 	if(shooterEncoder.get() < -10)
 	{
@@ -76,7 +76,7 @@ bool isUpAutonomous()
 	}
 }
 
-bool ShooterSystem::isUp()
+bool ShooterSystem::IsUp()
 {
 	if(shooterEncoder.get() < shootTickGoal)
 	{
@@ -87,24 +87,24 @@ bool ShooterSystem::isUp()
 	}
 }
 
-void ShooterSystem::stopArm()
+void ShooterSystem::StopArm()
 {
 	shooter.set(0.0);
 }
 
-void ShooterSystem::intake()
+void ShooterSystem::Intake()
 {
 	shooterL.set(-.5);
 	shooterR.set(.5);
 }
 
-void ShooterSystem::stopShooter()
+void ShooterSystem::StopShooter()
 {
 	shooterL.set(0); //stops the left shooting motor
 	shooterR.set(0); //stops the right shooting motor
 }
 
-bool ShooterSystem::isStopped()
+bool ShooterSystem::IsStopped()
 {
 	if((shooterL.get() == 0) && (shooterR.get() == 0))
 	{
@@ -115,7 +115,7 @@ bool ShooterSystem::isStopped()
 	}
 }
 
-void ShooterSystem::shoot()
+void ShooterSystem::Shoot()
 {
 	shooterL.set(.5);
 	shooterR.set(-.5);
