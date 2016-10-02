@@ -15,17 +15,34 @@ public:
 	void InitDefaultCommand();
 	void ResetDriveEncoders();
 	void ResetGyro();
-	void InvertMotorsTrue();
-	void InvertMotorsFalse();
+	void InvertMotors(bool);
 	void DriveStraightForward();
 	bool IsUnderLowbar();
 	void Stop();
 	bool IsStopped();
 	void TurnXdegrees();
-	bool IsTurned();
+	bool IsTurnedX();
+
+	// Get / Set
+	void SetDriveTickGoal(int);
+	int GetDriveTickGoal();
+	void SetDegreesTurn(double);
+	double GetDegreesTurn();
+	void SetSpeed(double);
+	double GetSpeed();
 
 private:
+	VictorSP leftFront, leftRear, rightFront, rightRear;
+	RobotDrive drive;
+	Encoder leftDriveEncoder, rightDriveEncoder;
 
+	AHRS gyro;
+	SerialPort serialPort;
+	const int updateRateHZ;
+
+	int driveTickGaol;
+	double degreesTurn;
+	double speed;
 
 };
 
