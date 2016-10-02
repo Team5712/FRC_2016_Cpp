@@ -22,13 +22,13 @@ void Robot::RobotInit()
 	defenseChooser = new SendableChooser();
 	AddAutoOptions(defenseChooser, "defense");
 
-	pneumaticSubsystem.compressor.setClosedLoopControl(true);
+	pneumaticSystem->compressor.setClosedLoopControl(true);
 
 	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 	sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 	NIVision.IMAQdxConfigureGrab(sessionFront);
 
-	driveSubsystem.resetGyro();
+	driveSystem->ResetGyro();
 	driveSubsystem.resetDriveEncoders();
 	shooterSubsystem.resetShooterEncoder();
 }
