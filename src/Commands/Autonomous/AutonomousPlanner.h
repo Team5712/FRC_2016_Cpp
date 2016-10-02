@@ -5,8 +5,8 @@
 #include "string"
 #include "map"
 
-#include "../CommandBase.h"
-#include "WPILib.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
 
 using namespace std;
