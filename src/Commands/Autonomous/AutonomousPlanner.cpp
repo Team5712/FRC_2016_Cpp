@@ -1,13 +1,12 @@
 #include "AutonomousPlanner.h"
 
 
-
 AutonomousPlanner::AutonomousPlanner(string defense, int position)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 
-	Requires(Robot::driveSubsystem);
+	Requires(Robot::driveSystem);
 
 	// "Save" these values for later use
 	this->defense = defense;
@@ -90,8 +89,9 @@ void AutonomousPlanner::LoadDriveInfo(string def, int pos)
 	// second stands for the second value in the map
 	newDriveTickGoal = encoderInfo.find(pos)->second;
 	newAngle = angleInfo.find(pos)->second;
+
 	// If there is a value for the defense, set it
-	if(newSpeed.find(def) != newSpeed.end())
+	if(speedInfo.find(def) != speedInfo.end())
 	{
 		newSpeed = speedInfo.find(def)->second;
 	} else
@@ -100,9 +100,9 @@ void AutonomousPlanner::LoadDriveInfo(string def, int pos)
 	}
 
 	// Update the drive subsystem's values
-	Robot::driveSubsystem->SetDriveTickGoal(newDriveTickGoal);
-	Robot::driveSubsystem->SetDegreesTurn(newAngle);
-	Robot::driveSubsystem->SetSpeed(newSpeed);
+	Robot::driveSystem->SetDriveTickGoal(newDriveTickGoal);
+	Robot::driveSystem->SetDegreesTurn(newAngle);
+	Robot::driveSystem->SetSpeed(newSpeed);
 
 	hasLoaded = true;
 }
