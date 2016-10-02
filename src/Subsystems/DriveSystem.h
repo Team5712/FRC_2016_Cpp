@@ -1,26 +1,32 @@
 #ifndef DRIVESYSTEM_H
 #define DRIVESYSTEM_H
 
-class driveSystem : Subsystem {
+#include "Commands/Subsystem.h"
+#include "WPILib.h"
+
+
+class DriveSystem : public Subsystem
+{
 
 public:
+	DriveSystem();
 
-driveSystem();
+	void Display();
+	void InitDefaultCommand();
+	void ResetDriveEncoders();
+	void ResetGyro();
+	void InvertMotorsTrue();
+	void InvertMotorsFalse();
+	void DriveStraightForward();
+	bool IsUnderLowbar();
+	void Stop();
+	bool IsStopped();
+	void TurnXdegrees();
+	bool IsTurned();
 
-void display();
-void initDefaultCommand();
-void resetDriveEncoders();
-void resetGyro();
-void invertMotorsTrue();
-void invertMotorsFalse();
-void driveStraightForward();
-bool isUnderLowbar();
-void stop();
-bool isStopped();
-void turnXdegrees();
-bool isTurned();
+private:
 
 
 };
 
-#undef DRIVESYSTEM_H
+#endif DRIVESYSTEM_H
