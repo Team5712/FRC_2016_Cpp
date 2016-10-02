@@ -40,7 +40,7 @@ private:
 	SerialPort serialPort;
 	const int updateRateHZ;
 
-	int driveTickGaol;
+	int driveTickGoal;
 	double degreesTurn;
 	double speed;
 
