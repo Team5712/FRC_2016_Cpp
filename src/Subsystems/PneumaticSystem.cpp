@@ -1,17 +1,8 @@
+#include "PneumaticSystem.h"
+#include "../RobotMap.h"
 
-package org.usfirst.frc.team5712.robot.subsystems;
 
-#include <RobotMap.h>
-#include <RobotMap.cpp>
-#include <Compressor.h>
-#include <Compressor.cpp>
-#include <DoubleSolenoid.h>
-#include <Subsystem.cpp>
-
-/**
- *
- */
-class PneumaticSubsystem extends Subsystem {
+class PneumaticSubsystem  Subsystem {
     
     public:
     
