@@ -30,7 +30,7 @@ private:
 	VictorSP shooterL, shooterR;
 	Encoder shooterEncoder;
 
-	VictorSP armControl;
+	VictorSP shooterLift;
 
 	double shooterTickGoal; // Tick to degree ratio
 
