@@ -38,54 +38,46 @@ void DriveSystem::InitDefaultCommand()
 
 }
 
-void DriveSystem::resetDriveEncoders()
+void DriveSystem::ResetDriveEncoders()
 {
 	leftDriveEncoder.reset();
 	rightDriveEncoder.reset();
 }
 
-void DriveSystem::resetGyro()
+void DriveSystem::ResetGyro()
 {
 	gyro.reset();
 }
 
-void DriveSystem::invertMotorsTrue()
+void DriveSystem::InvertMotors(bool invert)
 {
-	drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
-	drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
-	drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
-	drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+	drive.SetInvertedMotor(RobotDrive::MotorType::kFrontLeftMotor, invert);
+	drive.SetInvertedMotor(RobotDrive::MotorType::kFrontRightMotor, invert);
+	drive.SetInvertedMotor(RobotDrive::MotorType::kRearLeftMotor, invert);
+	drive.SetInvertedMotor(RobotDrive::MotorType::kRearRightMotor, invert);
 }
 
-void DriveSystem::invertMotorsFalse()
+void DriveSystem::DriveStraightForward()
 {
-	drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, false);
-	drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, false);
-	drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
-	drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, false);
-}
-
-void DriveSystem::driveStraightForward()
-{
-	leftFront.set(-0.7);
-	leftRear.set(-0.7);
-	rightFront.set(0.7);
-	rightRear.set(0.7);
+	leftFront.Set(-0.7);
+	leftRear.Set(-0.7);
+	rightFront.Set(0.7);
+	rightRear.Set(0.7);
 	if(gyro.getYaw() > 2)
 	{
-		rightFront.set(0.8);
-		rightRear.set(0.8);
+		rightFront.Set(0.8);
+		rightRear.Set(0.8);
 	}
 	if(gyro.getYaw() < -2)
 	{
-		leftFront.set(-0.8);
-		leftRear.set(-0.8);
+		leftFront.Set(-0.8);
+		leftRear.Set(-0.8);
 	}
 }
 
-bool DriveSystem::isUnderLowbar()
+bool DriveSystem::IsUnderLowbar()
 {
-	if(leftDriveEncoder.get() > driveTickGoal)
+	if(leftDriveEncoder.Get() > driveTickGoal)
 	{
 		return true;
 	} else
@@ -94,18 +86,18 @@ bool DriveSystem::isUnderLowbar()
 	}
 }
 
-void DriveSystem::stop()
+void DriveSystem::Stop()
 {
-	leftFront.set(0);
-	leftRear.set(0);
-	rightFront.set(0);
-	rightRear.set(0);
+	leftFront.Set(0);
+	leftRear.Set(0);
+	rightFront.Set(0);
+	rightRear.Set(0);
 }
 
-bool DriveSystem::isStopped()
+bool DriveSystem::IsStopped()
 {
-	if((leftFront.get() == 0) && (leftRear.get() == 0)
-			&& (rightFront.get() == 0) && (rightRear.get() == 0))
+	if((leftFront.Get() == 0) && (leftRear.Get() == 0)
+			&& (rightFront.Get() == 0) && (rightRear.Get() == 0))
 	{
 		return true;
 	} else
@@ -114,24 +106,24 @@ bool DriveSystem::isStopped()
 	}
 }
 
-void DriveSystem::turnXdegrees()
+void DriveSystem::TurnXdegrees()
 {
 	if (gyro.getYaw() > -degreesTurn )
 	{
-		leftFront.set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
-		leftRear.set(0.4 + (-degreesTurn - gyro.getYaw())/180);
-		rightFront.set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
-		rightRear.set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
+		leftFront.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
+		leftRear.Set(0.4 + (-degreesTurn - gyro.getYaw())/180);
+		rightFront.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
+		rightRear.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
 	} else if (gyro.getYaw() < (-degreesTurn - 3))
 	{
-		leftFront.set(0.4 - (-degreesTurn - gyro.getYaw())/180);
-		leftRear.set(-0.4 - (-degreesTurn - gyro.getYaw())/180);
-		rightFront.set(0.4 - (-degreesTurn - gyro.getYaw())/180);
-		rightRear.set(0.4 - (-degreesTurn - gyro.getYaw())/180);
+		leftFront.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
+		leftRear.Set(-0.4 - (-degreesTurn - gyro.getYaw())/180);
+		rightFront.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
+		rightRear.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
 	}
 }
 
-bool DriveSystem::isTurnedX()
+bool DriveSystem::IsTurnedX()
 {
 	if((gyro.getYaw() < -degreesTurn) && (gyro.getYaw() > -degreesTurn - 3))
 	{
