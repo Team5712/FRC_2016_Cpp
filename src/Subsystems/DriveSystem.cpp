@@ -133,5 +133,33 @@ bool DriveSystem::IsStopped()
 //	}
 //}
 
+// Get / Set methods
+
+void DriveSystem::SetDriveTickGoal(int newTickGoal)
+{
+	driveTickGoal = newTickGoal;
+}
+int DriveSystem::GetDriveTickGoal()
+{
+	return driveTickGoal;
+}
+
+void DriveSystem::SetDegreesTurn(double newDegrees)
+{
+	degreesTurn = newDegrees;
+}
+double DriveSystem::GetDegreesTurn()
+{
+	return degreesTurn;
+}
+
+void DriveSystem::SetSpeed(double newSpeed)
+{
+	speed = newSpeed;
+}
+double DriveSystem::GetSpeed()
+{
+	return speed;
+}
 
 
