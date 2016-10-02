@@ -1,20 +1,13 @@
-package org.usfirst.frc.team5712.robot.subsystems;
-
-#include <RobotMap.h>
-#include <RobotMap.cpp>
-#include <Encoder.h>
-#include <Encoder.cpp>
-#include <VictorSP.h>
-#include <VictorSP.cpp>
-#include <Subsystem.h>
-#include <Subsystem.cpp>
-#include <SmartDashboard.h>
-#include <SmartDashBoard.cpp>
+#include "RobotMap.h"
+#include "Encoder.h"
+#include "VictorSP.h"
+#include "Subsystem.h"
+#include "SmartDashboard.h"
 
 /**
  *
  */
-class ShooterSubsystem : public Subsystem {
+class ShooterSystem : public Subsystem {
     
     public:
     
@@ -26,7 +19,7 @@ class ShooterSubsystem : public Subsystem {
 		
 	double shootTickGoal = 10 * -140; //tick to degree ratio (degrees/tick) * angle desired
 	
-    public ShooterSubsystem::ShooterSubsystem(){
+    public ShooterSystem::ShooterSystem(){
     	
     	shooterR = new VictorSP(RobotMap.SHOOTER_RIGHT_MOTOR);
     	shooterL = new VictorSP(RobotMap.SHOOTER_LEFT_MOTOR);
