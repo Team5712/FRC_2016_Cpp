@@ -1,6 +1,3 @@
-#ifndef DRIVESUBSYSTEM_cpp
-#define DRIVESUBSYSTEM_cpp
-
 #include "DriveSystem.h"
 #include "../RobotMap.h"
 
