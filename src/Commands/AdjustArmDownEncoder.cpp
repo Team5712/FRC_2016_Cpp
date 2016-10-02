@@ -1,12 +1,9 @@
-#include "../CommandBase.h";
-#include "WPILibs.h";
 #include "AdjustArmDownEncoder.h"
 
-#include <iostream>
 
-AdjustArmDownEncoder::AdjustArmDownEncoder() : CommandBase("AdjustArmDownEncoder")
+AdjustArmDownEncoder::AdjustArmDownEncoder()
 {
-	Requires(Robot::ShooterSystem);
+	Requires(Robot::shooterSystem);
 }
 
 void AdjustArmDownEncoder::Initialize()
@@ -16,17 +13,17 @@ void AdjustArmDownEncoder::Initialize()
 
 void AdjustArmDownEncoder::Execute()
 {
-	Robot::ShooterSystem->armDown();
+	Robot::shooterSystem->ArmDown();
 }
 
 bool AdjustArmDownEncoder::IsFinished()
 {
-	Robot::ShooterSystem->isDown();
+	return Robot::shooterSystem->IsDown();
 }
 
 void AdjustArmDownEncoder::End()
 {
-	Robot::ShooterSystem->armStop();
+	Robot::shooterSystem->StopArm();
 }
 
 void AdjustArmDownEncoder::Interrupted()
