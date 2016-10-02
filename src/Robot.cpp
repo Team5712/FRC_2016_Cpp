@@ -10,6 +10,8 @@ DriveSystem *Robot::driveSystem = 0;
 PneumaticSystem *Robot::pneumaticSystem = 0;
 ShooterSystem *Robot::shooterSystem = 0;
 
+using namespace std;
+
 void Robot::RobotInit()
 {
 	driveSystem = new DriveSystem();
@@ -22,26 +24,23 @@ void Robot::RobotInit()
 	defenseChooser = new SendableChooser();
 	AddAutoOptions(defenseChooser, "defense");
 
-	pneumaticSystem->compressor.setClosedLoopControl(true);
+	pneumaticSystem->compressor.SetClosedLoopControl(true);
 
 	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 	sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 	NIVision.IMAQdxConfigureGrab(sessionFront);
 
 	driveSystem->ResetGyro();
-	driveSubsystem.resetDriveEncoders();
-	shooterSubsystem.resetShooterEncoder();
+	driveSystem->ResetDriveEncoders();
+	shooterSystem->ResetShooterEncoder();
 }
 
 void Robot::AutonomousInit()
 {
-	System.out.println("Autonomous Selected: " + autoChooser.getSelected());
-	System.out.println("Angle Selected: " + angleChooser.getSelected());
-
-	pneumaticSubsystem.in();
-	driveSubsystem.resetDriveEncoders();
-	driveSubsystem.resetGyro();
-	shooterSubsystem.resetShooterEncoder();
+	pneumaticSystem->In();
+	driveSystem->ResetDriveEncoders();
+	driveSystem->ResetGyro();
+	shooterSystem->ResetShooterEncoder();
 	
 	autonomousSelected = (CommandGroup) autoChooser.getSelected();
 	angleSelected = (int) angleChooser.getSelected();
