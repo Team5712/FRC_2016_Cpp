@@ -21,7 +21,7 @@ void DriveSystem::DriveSystem()
 	leftDriveEncoder = Encoder(RobotMap::LEFT_DRIVE_ENCODER_A, RobotMap::LEFT_DRIVE_ENCODER_B, false, Encoder::EncodingType::k4X);
 	rightDriveEncoder = Encoder(RobotMap::RIGHT_DRIVE_ENCODER_A, RobotMap::RIGHT_DRIVE_ENCODER_B, false, Encoder::EncodingType::k4X);
 	
-	gyro = AHRS(SerialPort::Port::kMXP);
+//	gyro = AHRS(SerialPort::Port::kMXP);
 }
 
 void DriveSystem::Display()
@@ -38,16 +38,16 @@ void DriveSystem::InitDefaultCommand()
 
 }
 
-void DriveSystem::ResetDriveEncoders()
-{
-	leftDriveEncoder.reset();
-	rightDriveEncoder.reset();
-}
-
-void DriveSystem::ResetGyro()
-{
-	gyro.reset();
-}
+//void DriveSystem::ResetDriveEncoders()
+//{
+//	leftDriveEncoder.reset();
+//	rightDriveEncoder.reset();
+//}
+//
+//void DriveSystem::ResetGyro()
+//{
+//	gyro.reset();
+//}
 
 void DriveSystem::InvertMotors(bool invert)
 {
@@ -57,23 +57,23 @@ void DriveSystem::InvertMotors(bool invert)
 	drive.SetInvertedMotor(RobotDrive::MotorType::kRearRightMotor, invert);
 }
 
-void DriveSystem::DriveStraightForward()
-{
-	leftFront.Set(-0.7);
-	leftRear.Set(-0.7);
-	rightFront.Set(0.7);
-	rightRear.Set(0.7);
-	if(gyro.getYaw() > 2)
-	{
-		rightFront.Set(0.8);
-		rightRear.Set(0.8);
-	}
-	if(gyro.getYaw() < -2)
-	{
-		leftFront.Set(-0.8);
-		leftRear.Set(-0.8);
-	}
-}
+//void DriveSystem::DriveStraightForward()
+//{
+//	leftFront.Set(-0.7);
+//	leftRear.Set(-0.7);
+//	rightFront.Set(0.7);
+//	rightRear.Set(0.7);
+//	if(gyro.getYaw() > 2)
+//	{
+//		rightFront.Set(0.8);
+//		rightRear.Set(0.8);
+//	}
+//	if(gyro.getYaw() < -2)
+//	{
+//		leftFront.Set(-0.8);
+//		leftRear.Set(-0.8);
+//	}
+//}
 
 bool DriveSystem::IsUnderLowbar()
 {
@@ -106,32 +106,32 @@ bool DriveSystem::IsStopped()
 	}
 }
 
-void DriveSystem::TurnXdegrees()
-{
-	if (gyro.getYaw() > -degreesTurn )
-	{
-		leftFront.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
-		leftRear.Set(0.4 + (-degreesTurn - gyro.getYaw())/180);
-		rightFront.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
-		rightRear.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
-	} else if (gyro.getYaw() < (-degreesTurn - 3))
-	{
-		leftFront.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
-		leftRear.Set(-0.4 - (-degreesTurn - gyro.getYaw())/180);
-		rightFront.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
-		rightRear.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
-	}
-}
-
-bool DriveSystem::IsTurnedX()
-{
-	if((gyro.getYaw() < -degreesTurn) && (gyro.getYaw() > -degreesTurn - 3))
-	{
-		return true;
-	} else{
-		return false;
-	}
-}
+//void DriveSystem::TurnXdegrees()
+//{
+//	if (gyro.getYaw() > -degreesTurn )
+//	{
+//		leftFront.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
+//		leftRear.Set(0.4 + (-degreesTurn - gyro.getYaw())/180);
+//		rightFront.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
+//		rightRear.Set(-0.4 + (-degreesTurn - gyro.getYaw())/180);
+//	} else if (gyro.getYaw() < (-degreesTurn - 3))
+//	{
+//		leftFront.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
+//		leftRear.Set(-0.4 - (-degreesTurn - gyro.getYaw())/180);
+//		rightFront.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
+//		rightRear.Set(0.4 - (-degreesTurn - gyro.getYaw())/180);
+//	}
+//}
+//
+//bool DriveSystem::IsTurnedX()
+//{
+//	if((gyro.getYaw() < -degreesTurn) && (gyro.getYaw() > -degreesTurn - 3))
+//	{
+//		return true;
+//	} else{
+//		return false;
+//	}
+//}
 
 
 
