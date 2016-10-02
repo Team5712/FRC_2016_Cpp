@@ -10,7 +10,7 @@ ShooterSystem::ShooterSystem()
 	shooterR = new VictorSP(RobotMap::SHOOTER_RIGHT_MOTOR);
 	shooterL = new VictorSP(RobotMap::SHOOTER_LEFT_MOTOR);
 
-	shooterEncoder = new Encoder(RobotMap::SHOOTER_ENCODER_A, RobotMap.SHOOTER_ENCODER_B, false, Encoder.EncodingType.k4X);
+	shooterEncoder = new Encoder(RobotMap::SHOOTER_ENCODER_A, RobotMap::SHOOTER_ENCODER_B, false, Encoder::EncodingType::k4X);
 
 	shooterLift = new VictorSP(RobotMap::SHOOTER_LIFT_MOTOR);
 }
@@ -22,25 +22,41 @@ void ShooterSystem::InitDefaultCommand()
 
 void ShooterSystem::Display()
 {
-	SmartDashboard::PutNumber("Left Shooter Output", shooterL.get());
-	SmartDashboard::PutNumber("Right Shooter Output", shooterR.get());
+	SmartDashboard::PutNumber("Left Shooter Output", shooterL.Get());
+	SmartDashboard::PutNumber("Right Shooter Output", shooterR.Get());
 	
-	SmartDashboard::putNumber("Shooter Encoder", shooterEncoder.get());
+	SmartDashboard::PutNumber("Shooter Encoder", shooterEncoder.Get());
 }
 
 void ShooterSystem::ResetShooterEncoder()
 {
-	shooterEncoder.reset();
+	shooterEncoder.Reset();
 }
 
 void ShooterSystem::ArmDown()
 {
-	shooter.set(-0.25);
+	shooterLift.Set(-0.25);
+}
+
+void ShooterSystem::ArmUp()
+{
+	shooterLift.Set(0.25);
 }
 
 bool ShooterSystem::IsDownAutonomous()
 {
-	if(shooterEncoder.get() > 1400)
+	if(shooterEncoder.Get() > 1400)
+	{
+		return true;
+	} else
+	{
+		return false;
+	}
+}
+
+bool ShooterSystem::IsUpAutonomous()
+{
+	if(shooterEncoder.Get() < -10)
 	{
 		return true;
 	} else
@@ -51,23 +67,7 @@ bool ShooterSystem::IsDownAutonomous()
 
 bool ShooterSystem::IsDown()
 {
-	if(shooterEncoder.get() > 0)
-	{
-		return true;
-	} else
-	{
-		return false;
-	}
-}
-
-void ShooterSystem::ArmUp()
-{
-	shooter.set(0.25);
-}
-
-bool ShooterSystem::IsUpAutonomous()
-{
-	if(shooterEncoder.get() < -10)
+	if(shooterEncoder.Get() > 0)
 	{
 		return true;
 	} else
@@ -78,7 +78,7 @@ bool ShooterSystem::IsUpAutonomous()
 
 bool ShooterSystem::IsUp()
 {
-	if(shooterEncoder.get() < shootTickGoal)
+	if(shooterEncoder.Get() < shooterTickGoal)
 	{
 		return true;
 	} else
@@ -89,24 +89,24 @@ bool ShooterSystem::IsUp()
 
 void ShooterSystem::StopArm()
 {
-	shooter.set(0.0);
+	shooterLift.Set(0.0);
 }
 
 void ShooterSystem::Intake()
 {
-	shooterL.set(-.5);
-	shooterR.set(.5);
+	shooterL.Set(-.5);
+	shooterR.Set(.5);
 }
 
 void ShooterSystem::StopShooter()
 {
-	shooterL.set(0); //stops the left shooting motor
-	shooterR.set(0); //stops the right shooting motor
+	shooterL.Set(0); //stops the left shooting motor
+	shooterR.Set(0); //stops the right shooting motor
 }
 
 bool ShooterSystem::IsStopped()
 {
-	if((shooterL.get() == 0) && (shooterR.get() == 0))
+	if((shooterL.Get() == 0) && (shooterR.Get() == 0))
 	{
 		return true;
 	} else
@@ -117,8 +117,8 @@ bool ShooterSystem::IsStopped()
 
 void ShooterSystem::Shoot()
 {
-	shooterL.set(.5);
-	shooterR.set(-.5);
+	shooterL.Set(.5);
+	shooterR.Set(-.5);
 }
 
 
