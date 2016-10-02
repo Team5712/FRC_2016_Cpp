@@ -6,11 +6,10 @@
 //#include "SerialPort.h"
 //#include "VictorSP.h"
 
+
 DriveSystem *Robot::driveSystem = 0;
 PneumaticSystem *Robot::pneumaticSystem = 0;
 ShooterSystem *Robot::shooterSystem = 0;
-
-using namespace std;
 
 void Robot::RobotInit()
 {
