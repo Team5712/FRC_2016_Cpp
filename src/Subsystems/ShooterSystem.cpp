@@ -7,12 +7,12 @@ ShooterSystem::ShooterSystem()
 	
 	shooterTickGoal = 10 * -140; //tick to degree ratio (degrees/tick) * angle desired
 
-	shooterR = new VictorSP(RobotMap.SHOOTER_RIGHT_MOTOR);
-	shooterL = new VictorSP(RobotMap.SHOOTER_LEFT_MOTOR);
+	shooterR = new VictorSP(RobotMap::SHOOTER_RIGHT_MOTOR);
+	shooterL = new VictorSP(RobotMap::SHOOTER_LEFT_MOTOR);
 
-	shooterEncoder = new Encoder(RobotMap.SHOOTER_ENCODER_A, RobotMap.SHOOTER_ENCODER_B, false, Encoder.EncodingType.k4X);
+	shooterEncoder = new Encoder(RobotMap::SHOOTER_ENCODER_A, RobotMap.SHOOTER_ENCODER_B, false, Encoder.EncodingType.k4X);
 
-	shooter = new VictorSP(RobotMap.SHOOTER_LIFT_MOTOR);
+	shooterLift = new VictorSP(RobotMap::SHOOTER_LIFT_MOTOR);
 }
 
 void ShooterSystem::InitDefaultCommand()
@@ -20,25 +20,25 @@ void ShooterSystem::InitDefaultCommand()
 
 }
 
-void display()
+void ShooterSystem::Display()
 {
-	SmartDashboard.putNumber("Left Shooter Output", shooterL.get());
-	SmartDashboard.putNumber("Right Shooter Output", shooterR.get());
+	SmartDashboard::PutNumber("Left Shooter Output", shooterL.get());
+	SmartDashboard::PutNumber("Right Shooter Output", shooterR.get());
 	
-	SmartDashboard.putNumber("Shooter Encoder", shooterEncoder.get());
+	SmartDashboard::putNumber("Shooter Encoder", shooterEncoder.get());
 }
 
-void resetShooterEncoder()
+void ShooterSystem::resetShooterEncoder()
 {
 	shooterEncoder.reset();
 }
 
-void armDown()
+void ShooterSystem::armDown()
 {
 	shooter.set(-0.25);
 }
 
-bool isDownAutonomous()
+bool ShooterSystem::isDownAutonomous()
 {
 	if(shooterEncoder.get() > 1400)
 	{
@@ -49,7 +49,7 @@ bool isDownAutonomous()
 	}
 }
 
-bool isDown()
+bool ShooterSystem::isDown()
 {
 	if(shooterEncoder.get() > 0)
 	{
@@ -60,7 +60,7 @@ bool isDown()
 	}
 }
 
-void armUp()
+void ShooterSystem::armUp()
 {
 	shooter.set(0.25);
 }
@@ -76,7 +76,7 @@ bool isUpAutonomous()
 	}
 }
 
-bool isUp()
+bool ShooterSystem::isUp()
 {
 	if(shooterEncoder.get() < shootTickGoal)
 	{
@@ -87,24 +87,24 @@ bool isUp()
 	}
 }
 
-void stopArm()
+void ShooterSystem::stopArm()
 {
 	shooter.set(0.0);
 }
 
-void intake()
+void ShooterSystem::intake()
 {
 	shooterL.set(-.5);
 	shooterR.set(.5);
 }
 
-void stopShooter()
+void ShooterSystem::stopShooter()
 {
 	shooterL.set(0); //stops the left shooting motor
 	shooterR.set(0); //stops the right shooting motor
 }
 
-bool isStopped()
+bool ShooterSystem::isStopped()
 {
 	if((shooterL.get() == 0) && (shooterR.get() == 0))
 	{
@@ -115,7 +115,7 @@ bool isStopped()
 	}
 }
 
-void shoot()
+void ShooterSystem::shoot()
 {
 	shooterL.set(.5);
 	shooterR.set(-.5);
