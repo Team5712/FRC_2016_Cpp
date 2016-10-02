@@ -18,7 +18,7 @@ void ShiftGear::Initialize()
 
 void ShiftGear::Execute()
 {
-	Robot::PneumaticSystem::shiftHigh();
+	Robot::PneumaticSystem->shiftHigh();
 }
 
 bool ShiftGear::IsFinished()
@@ -28,7 +28,7 @@ bool ShiftGear::IsFinished()
 
 void ShiftGear::End()
 {
-	Robot::PneumaticSystem::shiftLow();
+	Robot::PneumaticSystem->shiftLow();
 }
 
 void ShiftGear::Interrupted()

@@ -19,7 +19,7 @@ void SolenoidIn::Initialize()
 
 void SolenoidIn::Execute()
 {
-	Robot::PneumaticSystem::in();
+	Robot::PneumaticSystem->in();
 }
 
 bool SolenoidIn::IsFinished()

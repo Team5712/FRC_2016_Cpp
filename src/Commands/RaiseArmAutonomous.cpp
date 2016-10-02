@@ -18,17 +18,17 @@ void RaiseArmAutonomous::Initialize()
 
 void RaiseArmAutonomous::Execute()
 {
-	Robot::ShooterSystem::armUp();
+	Robot::ShooterSystem->armUp();
 }
 
 bool RaiseArmAutonomous::IsFinished()
 {
-	return Robot::ShooterSystem::isUpAutonomous();
+	return Robot::ShooterSystem->isUpAutonomous();
 }
 
 void RaiseArmAutonomous::End()
 {
-	Robot::ShooterSystem::stopArm();
+	Robot::ShooterSystem->stopArm();
 }
 
 void RaiseArmAutonomous::Interrupted()

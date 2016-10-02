@@ -17,7 +17,7 @@ void SolenoidOut::Initialize()
 
 void SolenoidOut::Execute()
 {
-	Robot::PneumaticSystem::out();
+	Robot::PneumaticSystem->out();
 }
 
 bool SolenoidOut::IsFinished()

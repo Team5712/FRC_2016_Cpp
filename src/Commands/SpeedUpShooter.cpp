@@ -19,12 +19,12 @@ void SpeedUpShooter::Initialize()
 
 void SpeedUpShooter::Execute()
 {
-	Robot::ShooterSystem::shoot();
+	Robot::ShooterSystem->shoot();
 }
 
 bool SpeedUpShooter::IsFinished()
 {
-	return Robot::ShooterSystem::IsTimedOut();
+	return Robot::ShooterSystem->IsTimedOut();
 }
 
 void SpeedUpShooter::End()

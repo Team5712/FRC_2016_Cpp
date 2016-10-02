@@ -18,17 +18,17 @@ void Stop::Initialize()
 
 void Stop::Execute()
 {
-	Robot::DriveSystem::stop();
+	Robot::DriveSystem->stop();
 }
 
 bool Stop::IsFinished()
 {
-	return Robot::DriveSystem::isStopped();
+	return Robot::DriveSystem->isStopped();
 }
 
 void Stop::End()
 {
-	Robot::DriveSystem::stopArm();
+	Robot::DriveSystem->stopArm();
 }
 
 void Stop::Interrupted()
