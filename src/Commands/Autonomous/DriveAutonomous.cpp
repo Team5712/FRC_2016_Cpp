@@ -1,5 +1,6 @@
 #include "DriveAutonomous.h"
 
+
 DriveAutonomous::DriveAutonomous(string defense, int position, bool shouldShoot)
 {
 
@@ -19,7 +20,7 @@ DriveAutonomous::DriveAutonomous(string defense, int position, bool shouldShoot)
 }
 
 // Compares the two strings, NON-case sensitive
-bool DriveAutonomous::InsenitiveCompare(string str1, string str2)
+bool DriveAutonomous::InsensitiveCompare(string str1, string str2)
 {
 	// Convert both strings to lowercase
 	transform(str1.begin(), str1.end(), str1.begin(), ::tolower);
