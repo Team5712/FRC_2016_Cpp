@@ -1,6 +1,3 @@
-
-package org.usfirst.frc.team5712.robot.subsystems;
-
 #include <RobotMap.h>
 #include <RobotMap.cpp>
 #include <Compressor.h>
@@ -11,7 +8,7 @@ package org.usfirst.frc.team5712.robot.subsystems;
 /**
  *
  */
-class PneumaticSubsystem extends Subsystem {
+class Pneumaticsystem extends Subsystem {
     
     public:
     
