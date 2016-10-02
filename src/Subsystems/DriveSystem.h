@@ -36,7 +36,7 @@ private:
 	RobotDrive drive;
 	Encoder leftDriveEncoder, rightDriveEncoder;
 
-	AHRS gyro;
+//	AHRS gyro;
 	SerialPort serialPort;
 	const int updateRateHZ;
 
