@@ -1,10 +1,10 @@
 #ifndef AdjustArmDownEncoder_H
 #define AdjustArmDownEncoder_H
 
-#include "../CommandBase.h"
-#include "WPILib.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
-class AdjustArmDownEncoder: public CommandBase
+class AdjustArmDownEncoder: public Command
 {
 public:
 	AdjustArmDownEncoder();
@@ -16,6 +16,6 @@ public:
 	
 private:
 	
-}
+};
 
 #endif

@@ -2,16 +2,16 @@
 #define AutonomousPlanner_H
 
 
-#include <string>
-#include <map>
+#include "string"
+#include "map"
 
-#include "../CommandBase.h"
-#include "WPILib.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
 
 using namespace std;
 
-class AutonomousPlanner: public CommandBase
+class AutonomousPlanner: public Command
 {
 public:
 	AutonomousPlanner(string, int);

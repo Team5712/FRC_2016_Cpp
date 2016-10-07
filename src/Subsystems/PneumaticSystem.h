@@ -7,15 +7,18 @@ class PneumaticSystem : public Subsystem
 
 public:
 
-	void PneumaticSubsystem();
-	void initDefaultCommand();
-	void shiftHigh();
-	void shiftLow();
-	void in();
-	void out();
+	PneumaticSystem();
+
+	void InitDefaultCommand();
+	void ShiftHigh();
+	void ShiftLow();
+	void In();
+	void Out();
 
 private:
 
+	DoubleSolenoid shifterSolenoid, shooterSolenoid;
+	Compressor compressor;
 
 };
 
