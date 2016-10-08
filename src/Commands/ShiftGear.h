@@ -4,7 +4,7 @@
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ShiftGear: public CommandBase
+class ShiftGear: public Command
 {
 public:
 	ShiftGear();
@@ -16,6 +16,6 @@ public:
 	
 private:
 	
-}
+};
 
 #endif
