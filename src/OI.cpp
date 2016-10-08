@@ -24,8 +24,8 @@ OI::OI()
 	solenoidIn_DriveStickButton = new JoystickButton(driveStick, 8);
 	solenoidIn_DriveStickButton->WhenPressed(new SolenoidIn());
 	
-	switchCam_DriveStickButton = new JoystickButton(driveStick, 9);
-	switchCam_DriveStickButton->WhenPressed(new SwitchCam());
+//	switchCam_DriveStickButton = new JoystickButton(driveStick, 9);
+//	switchCam_DriveStickButton->WhenPressed(new SwitchCam());
 	
 	//shootStick Button Commands
 	shoot_ShootStickTrigger = new JoystickButton(shootStick, 1);
@@ -34,8 +34,8 @@ OI::OI()
 	intake_ShootStickButton = new JoystickButton(shootStick, 2);
 	intake_ShootStickButton->WhenPressed(new Intake());
 	
-	switchCam_ShootStickButton = new JoystickButton(shootStick, 3);
-	switchCam_ShootStickButton->WhenPressed(new SwitchCam());
+//	switchCam_ShootStickButton = new JoystickButton(shootStick, 3);
+//	switchCam_ShootStickButton->WhenPressed(new SwitchCam());
 	
 	adjustArmUpEncoder_ShootStickButton = new JoystickButton(shootStick, 5);
 	adjustArmUpEncoder_ShootStickButton->WhenPressed(new AdjustArmUpEncoder());
