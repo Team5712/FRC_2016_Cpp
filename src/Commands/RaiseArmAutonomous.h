@@ -1,10 +1,10 @@
 #ifndef RaiseArmAutonomous_H
 #define RaiseArmAutonomous_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class RaiseArmAutonomous: public CommandBase
+class RaiseArmAutonomous: public Command
 {
 public:
 	RaiseArmAutonomous();
