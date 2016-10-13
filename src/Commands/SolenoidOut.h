@@ -1,10 +1,10 @@
 #ifndef SolenoidOut_H
 #define SolenoidOut_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class SolenoidOut: public CommandBase
+class SolenoidOut: public Command
 {
 public:
 	SolenoidOut();
