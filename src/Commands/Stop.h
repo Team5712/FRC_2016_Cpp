@@ -1,10 +1,10 @@
 #ifndef Stop_H
 #define Stop_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class Stop: public CommandBase
+class Stop: public Command
 {
 public:
 	Stop();
