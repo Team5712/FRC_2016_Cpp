@@ -1,10 +1,10 @@
 #ifndef AdjustArmDownEncoder_H
 #define AdjustArmDownEncoder_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class AdjustArmUpEncoder: public CommandBase
+class AdjustArmUpEncoder: public Command
 {
 public:
 	AdjustArmUpEncoder();
