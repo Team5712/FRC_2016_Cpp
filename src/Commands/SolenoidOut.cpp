@@ -1,10 +1,10 @@
 #include "SolenoidOut.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void SolenoidOut::SolenoidOut() : CommandBase("SolenoidOut")
+void SolenoidOut::SolenoidOut() : Command("SolenoidOut")
 {
 	Requires(Robot::PneumaticSystem);
 }
