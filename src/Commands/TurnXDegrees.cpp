@@ -2,11 +2,11 @@
 
 #include "TurnXDegrees.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void TurnXDegrees::TurnXDegrees() : CommandBase("TurnXDegrees")
+void TurnXDegrees::TurnXDegrees() : Command("TurnXDegrees")
 {
 	Requires(Robot::DriveSystem);
 }
