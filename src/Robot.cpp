@@ -20,8 +20,21 @@ void Robot::RobotInit()
 	oi = new OI();
 	window = LiveWindow::GetInstance();
 	
+	// Choosers - Defense
 	defenseChooser = new SendableChooser();
 	AddAutoOptions(defenseChooser, "defense");
+	SmartDashboard::PutData("Defense Chooser", defenseChooser);
+
+	// Choosers - Position
+	positionChooser = new SendableChooser();
+	AddAutoOptions(positionChooser, "position");
+	SmartDashboard::PutData("Position Chooser", positionChooser);
+
+	// Choosers - Shoot
+	shootChooser = new SendableChooser();
+	shootChooser->AddDefault("No Shoot", true); // Add the objects. Should the robot shoot or not in autonomous
+	shootChooser->AddObject("No Shoot", false);
+	SmartDashboard::PutData("Shoot Chooser", shootChooser);
 
 	pneumaticSystem->compressor.SetClosedLoopControl(true);
 
@@ -34,48 +47,77 @@ void Robot::RobotInit()
 	shooterSystem->ResetShooterEncoder();
 }
 
+void Robot::DisabledInit()
+{
+
+}
+
+void Robot::DisabledPeriodic()
+{
+	Scheduler::GetInstance()->Run();
+}
+
 void Robot::AutonomousInit()
 {
+	cout << "Defense Selected: " << defenseChooser->GetSelected() << endl;
+	cout << "Position Selected: " << positionChooser->GetSelected() << endl;
+
 	pneumaticSystem->In();
 	driveSystem->ResetDriveEncoders();
 	driveSystem->ResetGyro();
 	shooterSystem->ResetShooterEncoder();
 	
-	autonomousSelected = (CommandGroup) autoChooser.getSelected();
-	angleSelected = (int) angleChooser.getSelected();
-	autonomousSelected.start();
+//	autonomousSelected = (CommandGroup) autoChooser.getSelected();
+//	angleSelected = (int) angleChooser.getSelected();
+//	autonomousSelected.start();
+
+	// These may need to be casted as string and int respectively
+	defenseSelected = defenseChooser->GetSelected();
+	positionSelected = positionChooser->GetSelected();
+	willShoot = shootChooser->GetSelected();
+
+	autonomousCommand = new DriveAutonomous(defenseSelected, positionSelected, willShoot);
+	autonomousCommand->Start();
+
 }
 
 void Robot::AutonomousPeriodic()
 {
-	Scheduler.getInstance().run();
+	Scheduler::GetInstance()->Run();
 	
-	driveSubsystem.display();
-	shooterSubsystem.display();
+	driveSystem->Display();
+	shooterSystem->Display();
 }
 
 void Robot::TeleopInit()
 {
-	if (autonomousSelected != null) autonomousSelected.cancel()
-	{
-		driveSubsystem.resetDriveEncoders();
-		driveSubsystem.resetGyro();
-	}
+	// Single-line if statement:
+	if(autonomousCommand != NULL) autonomousCommand->Cancel();
+	driveSystem->ResetDriveEncoders();
+	driveSystem->ResetGyro();
 }
 
 void Robot::TeleopPeriodic()
 {
-	Scheduler.getInstance().run();
+	Scheduler::GetInstance()->Run();
 	
-	driveSubsystem.drive.arcadeDrive(oi.driveStick);
-	shooterSubsystem.shooter.set(oi.shootStick.getRawAxis(1));
+	driveSystem->drive.ArcadeDrive(oi->driveStick);
+	shooterSystem->shooterLift.Set(oi->shootStick->GetRawAxis(1));
 
-	driveSubsystem.display();
-	shooterSubsystem.display();
+	driveSystem->Display();
+	shooterSystem->Display();
 
 	NIVision.IMAQdxGrab(sessionFront, frame, 0);
-	CameraServer.getInstance().setImage(frame);
+	CameraServer::GetInstance()->SetImage(frame);
 }
+
+void Robot::TestPeriodic()
+{
+	LiveWindow::GetInstance()->Run();
+}
+
+
+// Custom methods
 
 void Robot::AddAutoOptions(SendableChooser *chooser, string optionSet)
 {
@@ -100,6 +142,13 @@ void Robot::AddAutoOptions(SendableChooser *chooser, string optionSet)
 		for(int d = 0; d < sizeof(defenses); d++)
 		{
 			chooser->AddObject(defenses[d], defenses[d]);
+		}
+	} else
+	{
+		// Positions
+		for(int p = 0; p < sizeof(positions); p++)
+		{
+			chooser->AddObject("Position #" << positions[p], positions[p]);
 		}
 	}
 
