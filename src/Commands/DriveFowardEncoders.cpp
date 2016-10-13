@@ -2,11 +2,11 @@
 
 #include "DriveFowardEncoders.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void DriveFowardEncoders::DriveFowardEncoders() : CommandBase("DriveFowardEncoders")
+void DriveFowardEncoders::DriveFowardEncoders() : Command("DriveFowardEncoders")
 {
 	Requires(Robot::DriveSystem);
 }
