@@ -1,10 +1,10 @@
 #ifndef InvertMotorsTrue_H
 #define InvertMotorsTrue_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class InvertMotorsTrue: public CommandBase
+class InvertMotorsTrue: public Command
 {
 public:
 	InvertMotorsTrue();
