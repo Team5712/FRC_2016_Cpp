@@ -2,11 +2,11 @@
 
 #include "SpeedUpShooter.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void SpeedUpShooter::SpeedUpShooter() : CommandBase("SpeedUpShooter")
+void SpeedUpShooter::SpeedUpShooter() : Command("SpeedUpShooter")
 {
 	Requires(Robot::ShooterSystem);
 	SetTimeout(1);
