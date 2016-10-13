@@ -2,11 +2,11 @@
 
 #include "RaiseArmAutonomous.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void RaiseArmAutonomous::RaiseArmAutonomous() : CommandBase("RaiseArmAutonomous")
+void RaiseArmAutonomous::RaiseArmAutonomous() : Command("RaiseArmAutonomous")
 {
 	Requires(Robot::ShooterSystem);
 }
