@@ -1,10 +1,10 @@
 #ifndef LowerArmAutonomous_H
 #define LowerArmAutonomous_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class LowerArmAutonomous: public CommandBase
+class LowerArmAutonomous: public Command
 {
 public:
 	LowerArmAutonomous();
