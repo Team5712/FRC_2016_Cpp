@@ -1,10 +1,10 @@
 #ifndef SolenoidIn_H
 #define SolenoidIn_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class SolenoidIn: public CommandBase
+class SolenoidIn: public Command
 {
 public:
 	SolenoidIn();
