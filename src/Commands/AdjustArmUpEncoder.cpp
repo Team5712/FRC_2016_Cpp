@@ -2,11 +2,11 @@
 
 #include "AdjustArmUpEncoder.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void AdjustArmUpEncoder::AdjustArmUpEncoder() : CommandBase("AdjustArmUpEncoder")
+void AdjustArmUpEncoder::AdjustArmUpEncoder() : Command("AdjustArmUpEncoder")
 {
 	Requires(Robot::ShooterSystem);
 }
