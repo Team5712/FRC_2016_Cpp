@@ -1,10 +1,10 @@
 #ifndef DriveFowardEncoders_H
 #define DriveFowardEncoders_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class DriveFowardEncoders: public CommandBase
+class DriveFowardEncoders: public Command
 {
 public:
 	DriveFowardEncoders();
