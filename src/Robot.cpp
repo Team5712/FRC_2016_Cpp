@@ -38,9 +38,9 @@ void Robot::RobotInit()
 
 	pneumaticSystem->compressor.SetClosedLoopControl(true);
 
-	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-	sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-	NIVision.IMAQdxConfigureGrab(sessionFront);
+//	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+//	sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+//	NIVision.IMAQdxConfigureGrab(sessionFront);
 
 	driveSystem->ResetGyro();
 	driveSystem->ResetDriveEncoders();
@@ -107,8 +107,8 @@ void Robot::TeleopPeriodic()
 	driveSystem->Display();
 	shooterSystem->Display();
 
-	NIVision.IMAQdxGrab(sessionFront, frame, 0);
-	CameraServer::GetInstance()->SetImage(frame);
+//	NIVision.IMAQdxGrab(sessionFront, frame, 0);
+//	CameraServer::GetInstance()->SetImage(frame);
 }
 
 void Robot::TestPeriodic()
