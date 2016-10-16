@@ -8,7 +8,7 @@
 
 void SolenoidIn::SolenoidIn() : Command("SolenoidIn")
 {
-	Requires(Robot::PneumaticSystem);
+	Requires(Robot::pneumaticSystem);
 }
 
 void SolenoidIn::Initialize()
@@ -19,7 +19,7 @@ void SolenoidIn::Initialize()
 
 void SolenoidIn::Execute()
 {
-	Robot::PneumaticSystem->in();
+	Robot::pneumaticSystem->In();
 }
 
 bool SolenoidIn::IsFinished()
