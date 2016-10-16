@@ -8,7 +8,7 @@
 
 void StopShooter::StopShooter() : Command("StopShooter")
 {
-	Requires(Robot::ShooterSystem);
+	Requires(Robot::shooterSystem);
 }
 
 void StopShooter::Initialize()
@@ -18,12 +18,12 @@ void StopShooter::Initialize()
 
 void StopShooter::Execute()
 {
-	Robot::ShooterSystem->stopShooter();
+	Robot::shooterSystem->StopShooter();
 }
 
 bool StopShooter::IsFinished()
 {
-	return Robot::ShooterSystem->isStopped();
+	return Robot::shooterSystem->IsStopped();
 }
 
 void StopShooter::End()
