@@ -8,7 +8,7 @@
 
 void TurnXDegrees::TurnXDegrees() : Command("TurnXDegrees")
 {
-	Requires(Robot::DriveSystem);
+	Requires(Robot::driveSystem);
 }
 
 void TurnXDegrees::Initialize()
@@ -18,17 +18,17 @@ void TurnXDegrees::Initialize()
 
 void TurnXDegrees::Execute()
 {
-	Robot::ShooterSystem->turnXDegrees();
+	Robot::shooterSystem->TurnXDegrees();
 }
 
 bool TurnXDegrees::IsFinished()
 {
-	return Robot::ShooterSystem->isTurnedX();
+	return Robot::shooterSystem->IsTurnedX();
 }
 
 void TurnXDegrees::End()
 {
-	Robot::ShooterSystem->stop();
+	Robot::shooterSystem->Stop();
 }
 
 void TurnXDegrees::Interrupted()
