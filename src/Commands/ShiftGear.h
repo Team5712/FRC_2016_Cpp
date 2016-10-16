@@ -1,10 +1,10 @@
 #ifndef ShiftGear_H
 #define ShiftGear_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class ShiftGear: public CommandBase
+class ShiftGear: public Command
 {
 public:
 	ShiftGear();
@@ -16,6 +16,6 @@ public:
 	
 private:
 	
-}
+};
 
 #endif

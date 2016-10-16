@@ -1,10 +1,10 @@
 #ifndef SpeedUpShooter_H
 #define SpeedUpShooter_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class SpeedUpShooter: public CommandBase
+class SpeedUpShooter: public Command
 {
 public:
 	SpeedUpShooter();
@@ -16,7 +16,7 @@ public:
 	
 private:
 	
-}
+};
 
 #endif
 

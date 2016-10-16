@@ -1,10 +1,10 @@
 #ifndef TurnXDegrees_H
 #define TurnXDegrees_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class TurnXDegrees: public CommandBase
+class TurnXDegrees: public Command
 {
 public:
 	TurnXDegrees();
@@ -16,7 +16,7 @@ public:
 	
 private:
 	
-}
+};
 
 #endif
 

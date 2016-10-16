@@ -1,10 +1,10 @@
 #ifndef Intake_H
 #define Intake_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class Intake: public CommandBase
+class Intake: public Command
 {
 public:
 	Intake();
@@ -16,6 +16,6 @@ public:
 	
 private:
 	
-}
+};
 
 #endif

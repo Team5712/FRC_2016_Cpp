@@ -1,10 +1,10 @@
 #ifndef StopShooter_H
 #define StopShooter_H
 
-#include "../CommandBase.h"
+#include "../Command.h"
 #include "WPILib.h"
 
-class StopShooter: public CommandBase
+class StopShooter: public Command
 {
 public:
 	StopShooter();
@@ -16,7 +16,7 @@ public:
 	
 private:
 	
-}
+};
 
 #endif
 

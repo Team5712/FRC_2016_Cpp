@@ -1,10 +1,10 @@
 #include "Intake.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void Intake::Intake() : CommandBase("Intake")
+void Intake::Intake() : Command("Intake")
 {
 	Requires(Robot::ShooterSystem);
 	SetTimeout(1);

@@ -2,11 +2,11 @@
 
 #include "SolenoidIn.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void SolenoidIn::SolenoidIn() : CommandBase("SolenoidIn")
+void SolenoidIn::SolenoidIn() : Command("SolenoidIn")
 {
 	Requires(Robot::PneumaticSystem);
 }

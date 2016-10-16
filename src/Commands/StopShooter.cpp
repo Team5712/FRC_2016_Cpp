@@ -2,11 +2,11 @@
 
 #include "StopShooter.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void StopShooter::StopShooter() : CommandBase("StopShooter")
+void StopShooter::StopShooter() : Command("StopShooter")
 {
 	Requires(Robot::ShooterSystem);
 }

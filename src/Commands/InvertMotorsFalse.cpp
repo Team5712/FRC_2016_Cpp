@@ -2,11 +2,11 @@
 
 #include "InvertMotorsFalse.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void InvertMotorsFalse::InvertMotorsFalse() : CommandBase("InvertMotorsFalse")
+void InvertMotorsFalse::InvertMotorsFalse() : Command("InvertMotorsFalse")
 {
 	Requires(Robot::DriveSystem);
 }

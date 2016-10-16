@@ -2,11 +2,11 @@
 
 #include "ShiftGear.h"
 #include "WPILib.h"
-#include "../CommandBase.h"
+#include "../Command.h"
 
 #include <iostream>
 
-void ShiftGear::ShiftGear() : CommandBase("ShiftGear")
+void ShiftGear::ShiftGear() : Command("ShiftGear")
 {
 	Requires(Robot::PneumaticSystem);
 }
