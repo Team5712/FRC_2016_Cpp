@@ -32,15 +32,15 @@ void Robot::RobotInit()
 
 	// Choosers - Shoot
 	shootChooser = new SendableChooser();
-	shootChooser->AddDefault("No Shoot", true); // Add the objects. Should the robot shoot or not in autonomous
+	shootChooser->AddDefault("No Shoot", (void*)true); // Add the objects. Should the robot shoot or not in autonomous
 	shootChooser->AddObject("No Shoot", false);
 	SmartDashboard::PutData("Shoot Chooser", shootChooser);
 
 	pneumaticSystem->compressor.SetClosedLoopControl(true);
 
-	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-	sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-	NIVision.IMAQdxConfigureGrab(sessionFront);
+//	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+//	sessionFront = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+//	NIVision.IMAQdxConfigureGrab(sessionFront);
 
 	driveSystem->ResetGyro();
 	driveSystem->ResetDriveEncoders();
@@ -107,8 +107,8 @@ void Robot::TeleopPeriodic()
 	driveSystem->Display();
 	shooterSystem->Display();
 
-	NIVision.IMAQdxGrab(sessionFront, frame, 0);
-	CameraServer::GetInstance()->SetImage(frame);
+//	NIVision.IMAQdxGrab(sessionFront, frame, 0);
+//	CameraServer::GetInstance()->SetImage(frame);
 }
 
 void Robot::TestPeriodic()
@@ -141,14 +141,14 @@ void Robot::AddAutoOptions(SendableChooser *chooser, string optionSet)
 		// Defenses
 		for(int d = 0; d < sizeof(defenses); d++)
 		{
-			chooser->AddObject(defenses[d], defenses[d]);
+			chooser->AddObject(defenses[d], (void*)defenses[d]);
 		}
 	} else
 	{
 		// Positions
 		for(int p = 0; p < sizeof(positions); p++)
 		{
-			chooser->AddObject("Position #" << positions[p], positions[p]);
+			chooser->AddObject("Position #" << positions[p], (void*)positions[p]);
 		}
 	}
 

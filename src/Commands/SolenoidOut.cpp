@@ -1,12 +1,9 @@
 #include "SolenoidOut.h"
-#include "WPILib.h"
-#include "../Command.h"
 
-#include <iostream>
 
 void SolenoidOut::SolenoidOut() : Command("SolenoidOut")
 {
-	Requires(Robot::PneumaticSystem);
+	Requires(Robot::pneumaticSystem);
 }
 
 void SolenoidOut::Initialize()
@@ -17,7 +14,7 @@ void SolenoidOut::Initialize()
 
 void SolenoidOut::Execute()
 {
-	Robot::PneumaticSystem->out();
+	Robot::pneumaticSystem->Out();
 }
 
 bool SolenoidOut::IsFinished()
