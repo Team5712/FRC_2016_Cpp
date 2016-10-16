@@ -1,8 +1,8 @@
 #ifndef DriveFowardEncoders_H
 #define DriveFowardEncoders_H
 
-#include "../Command.h"
-#include "WPILib.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
 class DriveFowardEncoders: public Command
 {
