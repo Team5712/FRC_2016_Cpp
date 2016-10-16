@@ -1,14 +1,11 @@
 //Finished
 
 #include "DriveFowardEncoders.h"
-#include "WPILib.h"
-#include "../Command.h"
 
-#include <iostream>
 
 void DriveFowardEncoders::DriveFowardEncoders() : Command("DriveFowardEncoders")
 {
-	Requires(Robot::DriveSystem);
+	Requires(Robot::driveSystem);
 }
 
 void DriveFowardEncoders::Initialize()
@@ -18,17 +15,17 @@ void DriveFowardEncoders::Initialize()
 
 void DriveFowardEncoders::Execute()
 {
-	Robot::DriveSystem->driveStraightForward();
+	Robot::driveSystem->DriveStraightForward();
 }
 
 bool DriveFowardEncoders::IsFinished()
 {
-	return Robot::DriveSystem->isUnderLowbar();
+	return Robot::driveSystem->IsUnderLowbar();
 }
 
 void DriveFowardEncoders::End()
 {
-	Robot::DriveSystem->stop();
+	Robot::driveSystem->Stop();
 }
 
 void DriveFowardEncoders::Interrupted()
