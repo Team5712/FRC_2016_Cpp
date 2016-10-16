@@ -8,7 +8,7 @@
 
 void LowerArmAutonomous::LowerArmAutonomous() : Command("LowerArmAutonomous")
 {
-	Requires(Robot::ShooterSystem);
+	Requires(Robot::shooterSystem);
 }
 
 void LowerArmAutonomous::Initialize()
@@ -18,18 +18,18 @@ void LowerArmAutonomous::Initialize()
 
 void LowerArmAutonomous::Execute()
 {
-	Robot::ShooterSystem->armDown();
+	Robot::shooterSystem->ArmDown();
 }
 
 bool LowerArmAutonomous::IsFinished()
 {
-	return Robot::ShooterSystem->isDownAutonomous();
+	return Robot::shooterSystem->IsDownAutonomous();
 }
 
 void LowerArmAutonomous::End()
 {
-	Robot::ShooterSystem->stopArm();
-	Robot::ShooterSystem->resetShooterEncoder();
+	Robot::shooterSystem->StopArm();
+	Robot::shooterSystem->ResetShooterEncoder();
 }
 
 void LowerArmAutonomous::Interrupted()
