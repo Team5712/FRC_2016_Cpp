@@ -8,13 +8,13 @@
 
 void InvertMotorsTrue::InvertMotorsTrue() : Command("InvertMotorsTrue")
 {
-	Requires(Robot::DriveSystem);
+	Requires(Robot::driveSystem);
 }
 
 void InvertMotorsTrue::Initialize()
 {
 	std::cout << "InvertMotorsTrue has initialized";
-	Robot::DriveSystem->invertMotorsTrue();
+	Robot::driveSystem->InvertMotorsTrue();
 }
 
 void InvertMotorsTrue::Execute()
@@ -24,7 +24,7 @@ void InvertMotorsTrue::Execute()
 
 bool InvertMotorsTrue::IsFinished()
 {
-	return false;
+	return false; // May cause a problem later...
 }
 
 void InvertMotorsTrue::End()

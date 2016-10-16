@@ -6,7 +6,7 @@
 
 void Intake::Intake() : Command("Intake")
 {
-	Requires(Robot::ShooterSystem);
+	Requires(Robot::shooterSystem);
 	SetTimeout(1);
 }
 
@@ -17,17 +17,17 @@ void Intake::Initialize()
 
 void Intake::Execute()
 {
-	Robot::ShooterSystem->intake();
+	Robot::shooterSystem->Intake();
 }
 
 bool Intake::IsFinished()
 {
-	return Robot::ShooterSystem->isTimedOut();
+	return IsTimedOut(); // May need to have Robot::shooterSystem->  in front of this
 }
 
 void Intake::End()
 {
-	Robot::ShooterSystem->stopShooter();
+	Robot::shooterSystem->StopShooter();
 }
 
 void Intake::Interrupted()

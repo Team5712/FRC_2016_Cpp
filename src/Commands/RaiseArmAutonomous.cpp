@@ -8,7 +8,7 @@
 
 void RaiseArmAutonomous::RaiseArmAutonomous() : Command("RaiseArmAutonomous")
 {
-	Requires(Robot::ShooterSystem);
+	Requires(Robot::shooterSystem);
 }
 
 void RaiseArmAutonomous::Initialize()
@@ -18,17 +18,17 @@ void RaiseArmAutonomous::Initialize()
 
 void RaiseArmAutonomous::Execute()
 {
-	Robot::ShooterSystem->armUp();
+	Robot::shooterSystem->ArmUp();
 }
 
 bool RaiseArmAutonomous::IsFinished()
 {
-	return Robot::ShooterSystem->isUpAutonomous();
+	return Robot::shooterSystem->IsUpAutonomous();
 }
 
 void RaiseArmAutonomous::End()
 {
-	Robot::ShooterSystem->stopArm();
+	Robot::shooterSystem->StopArm();
 }
 
 void RaiseArmAutonomous::Interrupted()
