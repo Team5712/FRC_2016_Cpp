@@ -32,7 +32,7 @@ void Robot::RobotInit()
 
 	// Choosers - Shoot
 	shootChooser = new SendableChooser();
-	shootChooser->AddDefault("No Shoot", true); // Add the objects. Should the robot shoot or not in autonomous
+	shootChooser->AddDefault("No Shoot", (void*)true); // Add the objects. Should the robot shoot or not in autonomous
 	shootChooser->AddObject("No Shoot", false);
 	SmartDashboard::PutData("Shoot Chooser", shootChooser);
 
@@ -141,14 +141,14 @@ void Robot::AddAutoOptions(SendableChooser *chooser, string optionSet)
 		// Defenses
 		for(int d = 0; d < sizeof(defenses); d++)
 		{
-			chooser->AddObject(defenses[d], defenses[d]);
+			chooser->AddObject(defenses[d], (void*)defenses[d]);
 		}
 	} else
 	{
 		// Positions
 		for(int p = 0; p < sizeof(positions); p++)
 		{
-			chooser->AddObject("Position #" << positions[p], positions[p]);
+			chooser->AddObject("Position #" << positions[p], (void*)positions[p]);
 		}
 	}
 
