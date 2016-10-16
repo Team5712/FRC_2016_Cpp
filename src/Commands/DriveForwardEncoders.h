@@ -4,10 +4,10 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class DriveFowardEncoders: public Command
+class DriveForwardEncoders: public Command
 {
 public:
-	DriveFowardEncoders();
+	DriveForwardEncoders();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

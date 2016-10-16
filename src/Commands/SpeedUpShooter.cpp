@@ -1,14 +1,11 @@
 //Finished
 
 #include "SpeedUpShooter.h"
-#include "WPILib.h"
-#include "../Command.h"
 
-#include <iostream>
 
 void SpeedUpShooter::SpeedUpShooter() : Command("SpeedUpShooter")
 {
-	Requires(Robot::ShooterSystem);
+	Requires(Robot::shooterSystem);
 	SetTimeout(1);
 }
 
@@ -19,12 +16,12 @@ void SpeedUpShooter::Initialize()
 
 void SpeedUpShooter::Execute()
 {
-	Robot::ShooterSystem->shoot();
+	Robot::shooterSystem->Shoot();
 }
 
 bool SpeedUpShooter::IsFinished()
 {
-	return Robot::ShooterSystem->IsTimedOut();
+	return IsTimedOut();
 }
 
 void SpeedUpShooter::End()

@@ -1,34 +1,34 @@
 //Finished
 
-#include "DriveFowardEncoders.h"
+#include "DriveForwardEncoders.h"
 
 
-void DriveFowardEncoders::DriveFowardEncoders() : Command("DriveFowardEncoders")
+void DriveForwardEncoders::DriveForwardEncoders() : Command("DriveFowardEncoders")
 {
 	Requires(Robot::driveSystem);
 }
 
-void DriveFowardEncoders::Initialize()
+void DriveForwardEncoders::Initialize()
 {
 	std::cout << "DriveFowardEncoders has initialized";
 }
 
-void DriveFowardEncoders::Execute()
+void DriveForwardEncoders::Execute()
 {
 	Robot::driveSystem->DriveStraightForward();
 }
 
-bool DriveFowardEncoders::IsFinished()
+bool DriveForwardEncoders::IsFinished()
 {
 	return Robot::driveSystem->IsUnderLowbar();
 }
 
-void DriveFowardEncoders::End()
+void DriveForwardEncoders::End()
 {
 	Robot::driveSystem->Stop();
 }
 
-void DriveFowardEncoders::Interrupted()
+void DriveForwardEncoders::Interrupted()
 {
 	std::cout << "DriveFowardEncoders was interrupted!";
 	End();

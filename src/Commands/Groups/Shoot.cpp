@@ -1,12 +1,10 @@
-#include "Shooter.h"
+#include "Shoot.h"
 
-/*
-||This title is pretty self explanitory
-*/
 
-Shooter::Shooter()
+
+Shoot::Shoot()
 {
-	AddSequential(new SpeedUpMotors());
+	AddSequential(new SpeedUpShooter());
 	AddSequential(new SolenoidOut());
 	AddParallel(new StopShooter());
 	AddSequential(new SolenoidIn());
