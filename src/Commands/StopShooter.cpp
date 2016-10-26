@@ -2,7 +2,6 @@
 
 #include "StopShooter.h"
 #include "WPILib.h"
-#include "../Command.h"
 
 #include <iostream>
 
