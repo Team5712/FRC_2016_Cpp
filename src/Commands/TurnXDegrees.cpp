@@ -2,7 +2,6 @@
 
 #include "TurnXDegrees.h"
 #include "WPILib.h"
-#include "../Command.h"
 
 #include <iostream>
 
@@ -18,17 +17,17 @@ void TurnXDegrees::Initialize()
 
 void TurnXDegrees::Execute()
 {
-	Robot::shooterSystem->TurnXDegrees();
+	Robot::driveSystem->TurnXDegrees();
 }
 
 bool TurnXDegrees::IsFinished()
 {
-	return Robot::shooterSystem->IsTurnedX();
+	return Robot::driveSystem->IsTurnedX();
 }
 
 void TurnXDegrees::End()
 {
-	Robot::shooterSystem->Stop();
+	Robot::driveSystem->Stop();
 }
 
 void TurnXDegrees::Interrupted()
