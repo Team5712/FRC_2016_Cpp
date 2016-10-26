@@ -1,7 +1,6 @@
 #ifndef SolenoidOut_H
 #define SolenoidOut_H
 
-#include "../Command.h"
 #include "WPILib.h"
 
 class SolenoidOut: public Command

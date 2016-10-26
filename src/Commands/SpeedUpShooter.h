@@ -1,7 +1,6 @@
 #ifndef SpeedUpShooter_H
 #define SpeedUpShooter_H
 
-#include "../Command.h"
 #include "WPILib.h"
 
 class SpeedUpShooter: public Command
