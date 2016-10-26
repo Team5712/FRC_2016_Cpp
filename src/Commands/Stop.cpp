@@ -28,7 +28,7 @@ bool Stop::IsFinished()
 
 void Stop::End()
 {
-	Robot::driveSystem->StopArm();
+	Robot::driveSystem->Stop();
 }
 
 void Stop::Interrupted()
