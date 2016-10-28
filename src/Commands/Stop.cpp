@@ -8,7 +8,7 @@
 
 void Stop::Stop() : CommandBase("Stop")
 {
-	Requires(Robot::DriveSystem);
+	Requires(Robot::driveSystem);
 }
 
 void Stop::Initialize()
@@ -18,17 +18,17 @@ void Stop::Initialize()
 
 void Stop::Execute()
 {
-	Robot::DriveSystem->stop();
+	Robot::driveSystem->Stop();
 }
 
 bool Stop::IsFinished()
 {
-	return Robot::DriveSystem->isStopped();
+	return Robot::driveSystem->IsStopped();
 }
 
 void Stop::End()
 {
-	Robot::DriveSystem->stopArm();
+	Robot::driveSystem->Stop();
 }
 
 void Stop::Interrupted()

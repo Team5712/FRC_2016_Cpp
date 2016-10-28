@@ -1,7 +1,6 @@
 #ifndef InvertMotorsFalse_H
 #define InvertMotorsFalse_H
 
-#include "../Command.h"
 #include "WPILib.h"
 
 class InvertMotorsFalse: public Command

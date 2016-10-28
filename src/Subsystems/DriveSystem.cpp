@@ -103,7 +103,7 @@ bool DriveSystem::IsStopped()
 	}
 }
 
-//void DriveSystem::TurnXdegrees()
+//void DriveSystem::TurnXDegrees()
 //{
 //	if (gyro.getYaw() > -degreesTurn )
 //	{

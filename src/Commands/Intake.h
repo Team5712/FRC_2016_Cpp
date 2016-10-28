@@ -1,7 +1,6 @@
 #ifndef Intake_H
 #define Intake_H
 
-#include "../Command.h"
 #include "WPILib.h"
 
 class Intake: public Command

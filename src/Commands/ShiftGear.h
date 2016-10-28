@@ -1,7 +1,6 @@
 #ifndef ShiftGear_H
 #define ShiftGear_H
 
-#include "../Command.h"
 #include "WPILib.h"
 
 class ShiftGear: public Command

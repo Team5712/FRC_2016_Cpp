@@ -8,7 +8,7 @@
 
 void AdjustArmUpEncoder::AdjustArmUpEncoder() : Command("AdjustArmUpEncoder")
 {
-	Requires(Robot::ShooterSystem);
+	Requires(Robot::shooterSystem);
 }
 
 void AdjustArmUpEncoder::Initialize()
@@ -18,17 +18,17 @@ void AdjustArmUpEncoder::Initialize()
 
 void AdjustArmUpEncoder::Execute()
 {
-	Robot::ShooterSystem->armUp();
+	Robot::shooterSystem->ArmUp();
 }
 
 bool AdjustArmUpEncoder::IsFinished()
 {
-	return Robot::ShooterSystem->isUp();
+	return Robot::shooterSystem->IsUp();
 }
 
 void AdjustArmUpEncoder::End()
 {
-	Robot::ShooterSystem->stopArm();
+	Robot::shooterSystem->StopArm();
 }
 
 void AdjustArmUpEncoder::Interrupted()

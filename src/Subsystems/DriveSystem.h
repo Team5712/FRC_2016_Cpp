@@ -20,7 +20,7 @@ public:
 	bool IsUnderLowbar();
 	void Stop();
 	bool IsStopped();
-	void TurnXdegrees();
+	void TurnXDegrees();
 	bool IsTurnedX();
 
 	// Get / Set
