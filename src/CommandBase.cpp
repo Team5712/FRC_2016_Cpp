@@ -1,6 +1,6 @@
 #include "CommandBase.h"
 
-CommandBase::ComandBase(const char *name) : CommandBase(name)
+CommandBase::CommandBase(const char *name) : CommandBase(name)
 {
 	//You guessed it, I have no idea what this function is for
 }
